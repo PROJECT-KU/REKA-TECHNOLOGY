@@ -8,256 +8,142 @@
 
     <title>@yield('title')</title>
     <!-- Favicons -->
-    <link href="{{ asset('niceshop/assets/img/faviconphoenix.png') }}" rel="icon">
-    <link href="{{ asset('niceshop/assets/img/faviconphoenix.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('onix/assets/images/rekafavicon.png') }}" rel="icon">
+    <link href="{{ asset('onix/assets/images/rekafavicon.png') }}" rel="apple-touch-icon">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    {{-- <link href="{{ 'niceshop/assets/vendor/bootstrap/css/bootstrap.min.css' }}" rel="stylesheet">
-    <link href="{{ 'niceshop/assets/vendor/bootstrap-icons/bootstrap-icons.css' }}" rel="stylesheet">
-    <link href="{{ 'niceshop/assets/vendor/swiper/swiper-bundle.min.css' }}" rel="stylesheet">
-    <link href="{{ 'niceshop/assets/vendor/aos/aos.css' }}" rel="stylesheet">
-    <link href="{{ 'niceshop/assets/vendor/glightbox/css/glightbox.min.css' }}" rel="stylesheet">
-    <link href="{{ 'niceshop/assets/vendor/drift-zoom/drift-basic.css' }}" rel="stylesheet"> --}}
-    <link href="{{ asset('niceshop/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('niceshop/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('niceshop/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('niceshop/assets/vendor/aos/aos.css') }}" rel="stylesheet">
-    <link href="{{ asset('niceshop/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('niceshop/assets/vendor/drift-zoom/drift-basic.css') }}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('onix/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
-    <link href="{{ asset('niceshop/assets/css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('niceshop/assets/css/custom.css') }}" rel="stylesheet">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{{ asset('onix/assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('onix/assets/css/templatemo-onix-digital.css') }}">
+    <link rel="stylesheet" href="{{ asset('onix/assets/css/animated.css') }}">
+    <link rel="stylesheet" href="{{ asset('onix/assets/css/owl.css') }}">
 
-
-    <!-- Main CSS File -->
-    {{-- <link href="{{ 'niceshop/assets/css/main.css' }}" rel="stylesheet">
-
-    <link href="{{ 'niceshop/assets/css/custom.css' }}" rel="stylesheet"> --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    @vite(['resources/css/public-custom-styles.css', 'resources/js/public-custom-scripts.js'])
-    @stack('styles')
-    @livewireStyles
 </head>
 
 <body class="index-page">
-    <header id="header" class="header sticky-top">
-        <!-- Top Bar -->
-        <div class="py-2 top-bar">
-            <div class="container-fluid container-xl">
-                <div class="row align-items-center">
-                    <div class="text-center col-lg-4 col-lg-12">
-                        <div class="announcement-slider swiper init-swiper">
-                            <script type="application/json" class="swiper-config">
-                                {
-                                    "loop": true,
-                                    "speed": 600,
-                                    "autoplay": {
-                                        "delay": 5000
-                                    },
-                                    "slidesPerView": 1,
-                                    "direction": "vertical",
-                                    "effect": "slide"
-                                }
-                            </script>
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">🚚 Free shipping on orders over $50</div>
-                                <div class="swiper-slide">💰 30 days money back guarantee.</div>
-                                <div class="swiper-slide">🎁 20% off on your first order</div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
 
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="{{ asset('onix/assets/images/logoreka.png') }}"
+                                style="width:189px; height:70px; object-fit:contain;">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="/" class="{{request()->routeIs('homepage') ? 'active' : ''}}">Home</a></li>
+                            <li class="scroll-to-section"><a class="{{request()->routeIs('services.*') ? 'active' : ''}}">Services</a></li>
+                            <li class="scroll-to-section"><a class="{{request()->routeIs('about.*') ? 'active' : ''}}">About</a></li>
+                            <li class="scroll-to-section"><a class="{{request()->routeIs('portfolio.*') ? 'active' : ''}}">Portfolio</a></li>
+                            <li class="scroll-to-section"><a class="{{request()->routeIs('video.*') ? 'active' : ''}}">Videos</a></li>
+                            <li class="scroll-to-section"><a class="{{request()->routeIs('contact.*') ? 'active' : ''}}">Contact Us</a></li>
+                            <li class="scroll-to-section">
+                                <div class="main-red-button-hover"><a href="#contact">Contact Us Now</a></div>
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
                 </div>
             </div>
         </div>
-
-        <!-- Main Header -->
-        <div class="main-header">
-            <div class="container-fluid container-xl">
-                <div class="py-3 d-flex align-items-center justify-content-between">
-
-                    <!-- Logo -->
-                    <a href="/" class="logo d-flex align-items-center">
-                        <h1 class="sitename">Phoenix</h1>
-                    </a>
-
-                    <!-- Search -->
-                    <livewire:components.global-search />
-                    <!-- Actions -->
-                    <div class="header-actions d-flex align-items-center justify-content-end">
-                        <!-- Mobile Search Toggle -->
-                        <button class="header-action-btn mobile-search-toggle d-xl-none" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#mobileSearch" aria-expanded="false"
-                            aria-controls="mobileSearch">
-                            <i class="bi bi-search"></i>
-                        </button>
-                    </div>
-
-                    <!-- Cart -->
-                    <livewire:components.cart-badge />
-
-                    <!-- Mobile Navigation Toggle -->
-                    <i class="mobile-nav-toggle d-xl-none bi bi-list me-0"></i>
-                </div>
-            </div>
-        </div>
-        </div>
-
-        <!-- Navigation -->
-        <div class="header-nav">
-            <div class="container-fluid container-xl position-relative">
-                <nav id="navmenu" class="navmenu">
-                    <ul>
-                        <li><a href="/" class="{{request()->routeIs('homepage') ? 'active' : ''}}">Home</a></li>
-                        <li><a class="{{request()->routeIs('shop.*') ? 'active' : ''}}" href="{{ route('shop.index') }}">Shop</a></li>
-                        <li><a class="{{request()->routeIs('about') ? 'active' : ''}}" href="/about">About</a></li>
-                        <li><a class="{{request()->routeIs('contact') ? 'active' : ''}}" href="contact.html">Contact</a></li>
-
-                    </ul>
-                </nav>
-            </div>
-        </div>
-
-        <!-- Mobile Search Form -->
-        <div class="collapse" id="mobileSearch">
-            <div class="container">
-                <form action="{{ route('homepage') }}" method="GET" class="search-form">
-                    <div class="input-group">
-                        <input type="text" name="search" value="{{ request('search') }}" class="form-control"
-                            placeholder="Search for products">
-                        <button class="btn" type="submit">
-                            <i class="bi bi-search"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
     </header>
+    <!-- ***** Header Area End ***** -->
     {{ $slot }}
     <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer dark-background">
-        <div class="footer-main">
-            <div class="container">
-                <div class="row gy-4">
-                    <div class="col-lg-6 col-md-8">
-                        <div class="footer-widget footer-about">
-                            <a href="index.html" class="logo">
-                                <span class="sitename">Phoenix</span>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in nibh vehicula,
-                                facilisis magna ut, consectetur lorem. Proin eget tortor risus.</p>
+    <div class="footer-dec">
+        <img src="{{ asset('onix/assets/images/footer-dec.png') }}" alt="">
+    </div>
 
-                            <div class="mt-4 social-links">
-                                <h5>Connect With Us</h5>
-                                <div class="social-icons">
-                                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-                                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-                                    <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-                                    <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
-                                    <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
-                                    <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-                                </div>
-                            </div>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="about footer-item">
+                        <div class="logo">
+                            <a href="#"><img src="{{ asset('onix/assets/images/logoreka.png') }}" alt="Reka Technology" style="width:189px; height:70px; object-fit:contain;"></a>
                         </div>
+                        <a href="#">help@rekatechnology.com</a>
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
                     </div>
-
-                    <div class="col-lg-2 col-md-6 col-sm-6">
-                        <div class="footer-widget">
-                            <h4>Product</h4>
-                            <ul class="footer-links">
-                                <li><a href="category.html">New Arrivals</a></li>
-                                <li><a href="category.html">Bestsellers</a></li>
-                                <li><a href="category.html">Women's Clothing</a></li>
-                                <li><a href="category.html">Men's Clothing</a></li>
-                                <li><a href="category.html">Accessories</a></li>
-                                <li><a href="category.html">Sale</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="footer-widget">
-                            <h4>Contact Information</h4>
-                            <div class="footer-contact">
-                                <div class="contact-item">
-                                    <i class="bi bi-geo-alt"></i>
-                                    <span>123 Fashion Street, New York, NY 10001</span>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="bi bi-telephone"></i>
-                                    <span>+1 (555) 123-4567</span>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="bi bi-envelope"></i>
-                                    <span>hello@example.com</span>
-                                </div>
-                                <div class="contact-item">
-                                    <i class="bi bi-clock"></i>
-                                    <span>Monday-Friday: 9am-6pm<br>Saturday: 10am-4pm<br>Sunday: Closed</span>
-                                </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="services footer-item">
+                        <h4>Layanan</h4>
+                        <div class="row">
+                            <div class="col-6">
+                                <ul>
+                                    <li><a href="#">IT Consultant</a></li>
+                                    <li><a href="#">Pengembangan Website & Aplikasi Mobile</a></li>
+                                    <li><a href="#">Pengembangan UI / UX</a></li>
+                                    <li><a href="#">Optimasi SEO</a></li>
+                                </ul>
                             </div>
 
-                            <div class="mt-4 app-buttons">
-                                <a href="#" class="app-btn">
-                                    <i class="bi bi-apple"></i>
-                                    <span>App Store</span>
-                                </a>
-                                <a href="#" class="app-btn">
-                                    <i class="bi bi-google-play"></i>
-                                    <span>Google Play</span>
-                                </a>
+                            <div class="col-6">
+                                <ul>
+                                    <li><a href="#">Optimasi Kecepatan Website</a></li>
+                                    <li><a href="#">Pengelolaan Konten Sosial Media</a></li>
+                                    <li><a href="#">Edit Video</a></li>
+                                    <li><a href="#">erawatan & Monitoring Website</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row gy-3 align-items-center">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="copyright">
-                            <p>© <span>Copyright</span> <strong class="sitename">Phoenix</strong>. All Rights Reserved.
-                            </p>
-                        </div>
-                        <div class="mt-1 credits">
-                            <!-- All the links in the footer should remain intact. -->
-                            <!-- You can delete the links only if you've purchased the pro version. -->
-                            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                            <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-                            Designed by <a href="https://phoenix.com/">Phoenix</a>
-                        </div>
+                <!-- <div class="col-lg-3">
+                    <div class="community footer-item">
+                        <h4>Community</h4>
+                        <ul>
+                            <li><a href="#">Digital Marketing</a></li>
+                            <li><a href="#">Business Ideas</a></li>
+                            <li><a href="#">Website Checkup</a></li>
+                            <li><a href="#">Page Speed Test</a></li>
+                        </ul>
                     </div>
-
-                    <div class="col-lg-6 col-md-12">
-                        <div
-                            class="flex-wrap gap-4 d-flex justify-content-lg-end justify-content-center align-items-center">
-                            <div class="payment-methods">
-                                <div class="payment-icons">
-                                    <i class="bi bi-credit-card" aria-label="Credit Card"></i>
-                                    <i class="bi bi-paypal" aria-label="PayPal"></i>
-                                    <i class="bi bi-apple" aria-label="Apple Pay"></i>
-                                    <i class="bi bi-google" aria-label="Google Pay"></i>
-                                    <i class="bi bi-shop" aria-label="Shop Pay"></i>
-                                    <i class="bi bi-cash" aria-label="Cash on Delivery"></i>
-                                </div>
-                            </div>
-
-                            <div class="legal-links">
-                                <a href="tos.html">Terms</a>
-                                <a href="privacy.html">Privacy</a>
-                                <a href="tos.html">Cookies</a>
-                            </div>
-                        </div>
+                </div> -->
+                <div class="col-lg-3">
+                    <div class="subscribe-newsletters footer-item">
+                        <h4>Daftar Newsletter</h4>
+                        <p>Jangan lewatkan promo, info penting, dan tips teknologi terbaru dari kami</p>
+                        <form action="#" method="get">
+                            <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
+                            <button type="submit" id="form-submit" class="main-button "><i class="fa fa-paper-plane-o"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="copyright">
+                        <p>Copyright © {{ date('Y') }} Reka Technology. All Rights Reserved.</p>
                     </div>
                 </div>
 
@@ -265,42 +151,34 @@
         </div>
     </footer>
 
-    <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <!-- Scripts -->
+    <script src="{{ asset('onix/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('onix/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('onix/assets/js/owl-carousel.js') }}"></script>
+    <script src="{{ asset('onix/assets/js/animation.js') }}"></script>
+    <script src="{{ asset('onix/assets/js/imagesloaded.js') }}"></script>
+    <script src="{{ asset('onix/assets/js/custom.js') }}"></script>
 
-    <a href="https://wa.me/6281234567890" target="_blank" id="wa-button"
-        class="wa-button d-flex align-items-center justify-content-center">
-        <i class="bi bi-whatsapp"></i>
-    </a>
+    <script>
+        // Acc
+        $(document).on("click", ".naccs .menu div", function() {
+            var numberIndex = $(this).index();
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
+            if (!$(this).is("active")) {
+                $(".naccs .menu div").removeClass("active");
+                $(".naccs ul li").removeClass("active");
 
-    <!-- Vendor JS Files -->
-    {{-- <script src="{{ 'niceshop/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' }}"></script>
-    <script src="{{ 'niceshop/assets/vendor/php-email-form/validate.js' }}"></script>
-    <script src="{{ 'niceshop/assets/vendor/swiper/swiper-bundle.min.js' }}"></script>
-    <script src="{{ 'niceshop/assets/vendor/aos/aos.js' }}"></script>
-    <script src="{{ 'niceshop/assets/vendor/glightbox/js/glightbox.min.js' }}"></script>
-    <script src="{{ 'niceshop/assets/vendor/drift-zoom/Drift.min.js' }}"></script>
-    <script src="{{ 'niceshop/assets/vendor/purecounter/purecounter_vanilla.js' }}"></script> --}}
-    <script src="{{ asset('niceshop/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('niceshop/assets/vendor/php-email-form/validate.js') }}"></script>
-    <script src="{{ asset('niceshop/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('niceshop/assets/vendor/aos/aos.js') }}"></script>
-    <script src="{{ asset('niceshop/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-    <script src="{{ asset('niceshop/assets/vendor/drift-zoom/Drift.min.js') }}"></script>
-    <script src="{{ asset('niceshop/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+                $(this).addClass("active");
+                $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
 
-    <script src="{{ asset('niceshop/assets/js/main.js') }}"></script>
-    <script src="{{ asset('niceshop/assets/js/custom.js') }}"></script>
+                var listItemHeight = $(".naccs ul")
+                    .find("li:eq(" + numberIndex + ")")
+                    .innerHeight();
+                $(".naccs ul").height(listItemHeight + "px");
+            }
+        });
+    </script>
 
-
-    <!-- Main JS File -->
-    {{-- <script src="{{ 'niceshop/assets/js/main.js' }}"></script> --}}
-    @livewireScripts
-    @stack('scripts')
 </body>
 
 </html>

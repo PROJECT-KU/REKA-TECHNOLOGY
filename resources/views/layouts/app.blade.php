@@ -8,6 +8,10 @@
 
     <title>@yield('title')</title>
 
+    <!-- Favicons -->
+    <link href="{{ asset('onix/assets/images/rekafavicon.png') }}" rel="icon">
+    <link href="{{ asset('onix/assets/images/rekafavicon.png') }}" rel="apple-touch-icon">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -41,92 +45,94 @@
 
     <!--================== SWEET ALERT ==================-->
     @push('scripts')
-        <script>
-            window.addEventListener("load", function() {
-                @if (session('success'))
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil!',
-                        text: '{{ session('success') }}',
-                        timer: 2000,
-                        showConfirmButton: false
-                    });
-                @endif
-
-                @if (session('error'))
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Gagal!',
-                        text: '{{ session('error') }}'
-                    });
-                @endif
+    <script>
+        window.addEventListener("load", function() {
+            @if(session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '{{ session('
+                success ') }}',
+                timer: 2000,
+                showConfirmButton: false
             });
-            document.addEventListener('show-alert', function(event) {
-                const detail = event.detail[0] || event.detail;
+            @endif
 
-                Swal.fire({
-                    icon: detail.type,
-                    title: detail.type === 'success' ? 'Berhasil!' : 'Gagal!',
-                    text: detail.message,
-                    timer: detail.type === 'success' ? 2000 : null,
-                    showConfirmButton: detail.type !== 'success'
-                });
+            @if(session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal!',
+                text: '{{ session('
+                error ') }}'
             });
-            document.addEventListener('alpine:init', () => {
-                Alpine.directive('currency', (el, {}, {
-                    cleanup
-                }) => {
-                    const formatRupiah = (value) => {
-                        if (!value) return '';
-                        let number = value.toString().replace(/[^0-9]/g, '');
-                        if (!number) return '';
-                        return 'Rp ' + parseInt(number).toLocaleString('id-ID');
-                    };
+            @endif
+        });
+        document.addEventListener('show-alert', function(event) {
+            const detail = event.detail[0] || event.detail;
 
-                    const parseRupiah = (value) => {
-                        return value.replace(/[^0-9]/g, '');
-                    };
+            Swal.fire({
+                icon: detail.type,
+                title: detail.type === 'success' ? 'Berhasil!' : 'Gagal!',
+                text: detail.message,
+                timer: detail.type === 'success' ? 2000 : null,
+                showConfirmButton: detail.type !== 'success'
+            });
+        });
+        document.addEventListener('alpine:init', () => {
+            Alpine.directive('currency', (el, {}, {
+                cleanup
+            }) => {
+                const formatRupiah = (value) => {
+                    if (!value) return '';
+                    let number = value.toString().replace(/[^0-9]/g, '');
+                    if (!number) return '';
+                    return 'Rp ' + parseInt(number).toLocaleString('id-ID');
+                };
 
-                    let isFormatting = false;
+                const parseRupiah = (value) => {
+                    return value.replace(/[^0-9]/g, '');
+                };
 
-                    const handleInput = (e) => {
-                        if (isFormatting) return;
+                let isFormatting = false;
 
-                        isFormatting = true;
-                        const rawValue = parseRupiah(e.target.value);
-                        e.target.value = formatRupiah(rawValue);
-                        isFormatting = false;
-                    };
+                const handleInput = (e) => {
+                    if (isFormatting) return;
 
-                    // Format initial value hanya sekali
-                    const initializeValue = () => {
-                        if (el.value && !el.dataset.formatted) {
-                            // Hanya format jika belum ada prefix "Rp"
-                            if (!el.value.toString().startsWith('Rp')) {
-                                el.value = formatRupiah(el.value);
-                            }
-                            el.dataset.formatted = 'true';
+                    isFormatting = true;
+                    const rawValue = parseRupiah(e.target.value);
+                    e.target.value = formatRupiah(rawValue);
+                    isFormatting = false;
+                };
+
+                // Format initial value hanya sekali
+                const initializeValue = () => {
+                    if (el.value && !el.dataset.formatted) {
+                        // Hanya format jika belum ada prefix "Rp"
+                        if (!el.value.toString().startsWith('Rp')) {
+                            el.value = formatRupiah(el.value);
                         }
-                    };
-
-                    // Tunggu Livewire selesai render
-                    if (window.Livewire) {
-                        Livewire.hook('morph.updated', () => {
-                            initializeValue();
-                        });
+                        el.dataset.formatted = 'true';
                     }
+                };
 
-                    // Untuk initial load
-                    setTimeout(initializeValue, 50);
-
-                    el.addEventListener('input', handleInput);
-
-                    cleanup(() => {
-                        el.removeEventListener('input', handleInput);
+                // Tunggu Livewire selesai render
+                if (window.Livewire) {
+                    Livewire.hook('morph.updated', () => {
+                        initializeValue();
                     });
+                }
+
+                // Untuk initial load
+                setTimeout(initializeValue, 50);
+
+                el.addEventListener('input', handleInput);
+
+                cleanup(() => {
+                    el.removeEventListener('input', handleInput);
                 });
             });
-        </script>
+        });
+    </script>
     @endpush
     <!--================== END ==================-->
 
