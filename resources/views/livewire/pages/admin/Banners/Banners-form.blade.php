@@ -68,7 +68,7 @@
                 <label for="deskripsi" class="form-label">Deskripsi</label>
                 <textarea id="deskripsi" wire:model.defer="deskripsi" rows="3"
                     class="form-control @error('deskripsi') is-invalid @enderror"
-                    placeholder="Masukkan deskripsi produk"></textarea>
+                    placeholder="Masukkan deskripsi"></textarea>
                 @error('deskripsi')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

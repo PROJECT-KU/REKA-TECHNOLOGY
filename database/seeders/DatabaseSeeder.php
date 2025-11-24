@@ -2,9 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Customer;
-use App\Models\DataAkun;
-use App\Models\Product;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -20,7 +17,6 @@ class DatabaseSeeder extends Seeder
         // seeder role
         $this->call([
             RoleSeeder::class,
-            JobSeeder::class
         ]);
 
         $adminRole = Role::firstOrCreate(['name' => 'admin']);
@@ -62,10 +58,5 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create([
             'role_id' => $userRole->id
         ]);
-
-        // Generate 100 Product
-        DataAkun::factory()->count(100)->create();
-
-        Product::factory()->count(100)->create();
     }
 }
