@@ -51,8 +51,7 @@
                 Swal.fire({
                     icon: 'success',
                     title: 'Berhasil!',
-                    text: '{{ session('
-                    success ') }}',
+                    text: '{{ session('success') }}',
                     timer: 2000,
                     showConfirmButton: false
                 });
@@ -62,13 +61,11 @@
                 Swal.fire({
                     icon: 'error',
                     title: 'Gagal!',
-                    text: '{{ session('
-                    error ') }}'
+                    text: '{{ session('error') }}'
                 });
             endif
         });
-    </script>
-    <script>
+        
         document.addEventListener('show-alert', function(event) {
             const detail = event.detail[0] || event.detail;
 
