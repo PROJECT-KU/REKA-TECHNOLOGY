@@ -37,26 +37,34 @@ new class extends Component {
                     </a>
                 </li>
 
-                <li class="sidebar-item has-sub {{ request()->routeIs('admin.Banners.*') ? 'active open' : '' || request()->routeIs('admin.Paket.*') ? 'active open' : ''}}">
+                <li class="sidebar-item has-sub 
+    {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') ? 'active open' : '' }}">
+
                     <a href="javascript:void(0)"
-                        class="sidebar-link {{ request()->routeIs('admin.Banners.*') ? 'text-primary fw-bold' : '' || request()->routeIs('admin.Paket.*') ? 'text-primary fw-bold' : '' }}">
-                        <i class="bi bi-globe-americas {{ request()->routeIs('admin.Banners.*') ? 'text-primary' : '' || request()->routeIs('admin.Paket.*') ? 'text-primary' : '' }}"></i>
-                        <span class="{{ request()->routeIs('admin.Banners.*') ? 'text-primary' : '' || request()->routeIs('admin.Paket.*') ? 'text-primary' : ''}}">
+                        class="sidebar-link 
+       {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') ? 'text-primary fw-bold' : '' }}">
+                        <i class="bi bi-globe-americas 
+           {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') ? 'text-primary' : '' }}"></i>
+                        <span class="
+           {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') ? 'text-primary' : '' }}">
                             Data Public
                         </span>
                     </a>
-                    <ul class="submenu">
-                        <li class="submenu-item {{ request()->routeIs('admin.Banners.*') ? 'active' : '' }}">
-                            <a wire:navigate href="{{ route('admin.Banners.index') }}" class="submenu-link">Data
-                                Banner</a>
-                        </li>
-                    </ul>
 
                     <ul class="submenu">
-                        <li class="submenu-item {{ request()->routeIs('admin.Paket.*') ? 'active' : '' }}">
-                            <a wire:navigate href="{{ route('admin.Paket.index') }}" class="submenu-link">Data
-                                Paket</a>
+
+                        <li class="submenu-item {{ request()->routeIs('admin.Banners.*') ? 'active' : '' }}">
+                            <a wire:navigate href="{{ route('admin.Banners.index') }}" class="submenu-link">
+                                Data Banner
+                            </a>
                         </li>
+
+                        <li class="submenu-item {{ request()->routeIs('admin.Paket.*') ? 'active' : '' }}">
+                            <a wire:navigate href="{{ route('admin.Paket.index') }}" class="submenu-link">
+                                Data Paket
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
 

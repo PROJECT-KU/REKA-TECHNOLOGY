@@ -1,6 +1,6 @@
 <div>
     <div class="d-flex mb-2 align-items-center justify-content-between">
-        <h3>Data Banner</h3>
+        <h3>Data Paket</h3>
         @php
         $breadcrumbs = [['name' => 'Beranda', 'url' => route('admin.dashboard')], ['name' => 'Data Paket']];
         @endphp
@@ -16,7 +16,7 @@
                         <i class="bi bi-search" style="font-size: 14px;"></i>
                     </div>
                 </div>
-                <a wire:navigate href="{{ route('admin.Banners.create') }}" class="btn btn-primary rounded-pill px-4">
+                <a wire:navigate href="{{ route('admin.Paket.create') }}" class="btn btn-primary rounded-pill px-4">
                     <i class="bi bi-plus-lg"></i>
                     <span>Tambah Data Paket</span>
                 </a>
@@ -37,7 +37,6 @@
                     <tbody>
                         @forelse ($Price as $item)
                         <tr style="text-align: center;">
-                            <td>{{ $item->judul }}</td>
 
                             <td class="text-truncate" style="max-width: 200px;">
                                 {{ $item->nama_paket }}
@@ -66,7 +65,7 @@
                             </td>
 
                             <td class="text-center">
-                                <a wire:navigate href="{{ route('admin.Banners.edit', $item) }}"
+                                <a wire:navigate href="{{ route('admin.Paket.edit', $item) }}"
                                     class="btn btn-warning btn-sm me-1"
                                     title="Edit">
                                     <i class="bi bi-pencil-square"></i>
