@@ -13,6 +13,8 @@ use App\Livewire\Pages\Admin\Banners\BannersList;
 
 // Data Paket
 use App\Livewire\Pages\Admin\Price\PriceList;
+use App\Livewire\Pages\Admin\Price\PriceCreate;
+use App\Livewire\Pages\Admin\Price\PriceEdit;
 
 Route::get('/', Index::class)->name('homepage');
 
@@ -36,6 +38,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Data Paket
     Route::get('/admin/DataPaket', PriceList::class)->name('admin.Paket.index');
+    Route::get('/admin/DataPaket/create', PriceCreate::class)->name('admin.Paket.create');
+    Route::get('/admin/DataPaket/{Price}/edit', PriceEdit::class)->name('admin.Paket.edit');
 });
 
 require __DIR__ . '/auth.php';

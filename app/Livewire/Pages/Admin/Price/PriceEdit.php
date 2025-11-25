@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Livewire\Pages\Admin\Banners;
+namespace App\Livewire\Pages\Admin\Price;
 
-use App\Models\Banners;
+use App\Models\Price;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 
-class BannersEdit extends Component
+class PriceEdit extends Component
 {
-    public Banners $Banners;
+    public Price $Price;
 
-    public function mount(Banners $Banners)
+    public function mount(Price $Price)
     {
-        $this->Banners = $Banners;
+        $this->Price = $Price;
     }
 
     #[Layout('layouts.app')]
     public function render()
     {
-        return view('livewire.pages.admin.Banners.Banners-edit', [
-            'Banners' => $this->Banners,
+        return view('livewire.pages.admin.price.Price-edit', [
+            'Price' => $this->Price,
         ]);
     }
 }

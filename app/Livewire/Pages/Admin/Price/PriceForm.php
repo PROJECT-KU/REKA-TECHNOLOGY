@@ -11,11 +11,14 @@ use Illuminate\Support\Facades\Storage;
 class PriceForm extends Component
 {
     use WithFileUploads;
-    public ?Banners $banners = null;
+    public ?Price $price = null;
 
-    public $judul = '';
-    public $gambar;
-    public $existingImage = null; // nama file lama di DB
+    public $nama_paket = '';
+    public $harga_awal = '';
+    public $harga_promo = '';
+    public $hemat_persentase = '';
+    public $best_price = '';
+    public $show_homepage = '';
     public $deskripsi = '';
     public $status = '';
 
@@ -23,112 +26,104 @@ class PriceForm extends Component
 
     public function mount()
     {
-        if ($this->banners) {
-            $this->judul         = $this->banners->judul;
-            $this->existingImage = $this->banners->gambar;
-            $this->deskripsi     = $this->banners->deskripsi;
-            $this->status        = $this->banners->status;
-            $this->mode          = 'edit';
+        if ($this->price) {
+            $this->nama_paket               = $this->price->nama_paket;
+            $this->harga_awal               = $this->price->harga_awal;
+            $this->harga_promo              = $this->price->harga_promo;
+            $this->hemat_persentase         = $this->price->hemat_persentase;
+            $this->best_price               = $this->price->best_price;
+            $this->show_homepage            = $this->price->show_homepage;
+            $this->deskripsi                = $this->price->deskripsi;
+            $this->status                   = $this->price->status;
+            $this->mode                     = 'edit';
         }
     }
 
     public function save()
     {
         $rules = [
-            'judul'      => 'required|min:3',
-            'deskripsi'  => 'nullable|string',
-            'status'     => 'required|in:active,non-active',
+            'nama_paket'            => 'required|min:3',
+            'harga_awal'            => 'required|min:1',
+            'harga_promo'           => 'required|min:1',
+            'best_price'            => 'required|in:yes,no',
+            'show_homepage'         => 'required|in:yes,no',
+            'deskripsi'             => 'nullable|string',
+            'status'                => 'required|in:active,non-active',
         ];
-
-        if ($this->mode === 'create') {
-            $rules['gambar'] = 'required|image|mimes:png,jpg,jpeg|max:5120';
-        } else {
-            $rules['gambar'] = 'nullable|image|mimes:png,jpg,jpeg|max:5120';
-        }
 
         $this->validate($rules);
 
         if ($this->mode === 'create') {
-            $this->createBanners();
+            $this->createPrice();
         } else {
-            $this->updateBanners();
+            $this->updatePrice();
         }
     }
 
-    private function createBanners()
+    private function createPrice()
     {
         try {
-            // generate nama unik dengan angka random
-            $random   = rand(10000, 99999);
-            $filename = 'Banners_' . $random . '.' . $this->gambar->getClientOriginalExtension();
-
-            // simpan file fisik ke folder storage/app/public/img/banners
-            $this->gambar->storeAs('img/banners', $filename, 'public');
-
-            // simpan hanya nama file ke DB
-            Banners::create([
-                'judul'     => $this->judul,
-                'gambar'    => $filename, // cuma nama file
-                'deskripsi' => $this->deskripsi,
-                'status'    => $this->status,
+            Price::create([
+                'nama_paket'            => $this->nama_paket,
+                'harga_awal'            => $this->harga_awal,
+                'harga_promo'           => $this->harga_promo,
+                'hemat_persentase'      => $this->hemat_persentase,
+                'best_price'            => $this->best_price,
+                'show_homepage'         => $this->show_homepage,
+                'deskripsi'             => $this->deskripsi,
+                'status'                => $this->status,
             ]);
 
-            session()->flash('success', 'Data Banner berhasil ditambahkan!');
-            $this->dispatch('Banners-created');
+            session()->flash('success', 'Data Paket berhasil ditambahkan!');
+            $this->dispatch('Price-created');
             $this->resetForm();
 
-            return redirect()->route('admin.Banners.index');
+            return redirect()->route('admin.Paket.index');
         } catch (\Exception $e) {
-            session()->flash('error', 'Gagal menambahkan Data Banners: ' . $e->getMessage());
+            session()->flash('error', 'Gagal menambahkan Data Paket: ' . $e->getMessage());
         }
     }
 
-    private function updateBanners()
+    private function updatePrice()
     {
         try {
             $data = [
-                'judul'     => $this->judul,
-                'deskripsi' => $this->deskripsi,
-                'status'    => $this->status,
+                'nama_paket'            => $this->nama_paket,
+                'harga_awal'            => $this->harga_awal,
+                'harga_promo'           => $this->harga_promo,
+                'hemat_persentase'      => $this->hemat_persentase,
+                'best_price'            => $this->best_price,
+                'show_homepage'         => $this->show_homepage,
+                'deskripsi'             => $this->deskripsi,
+                'status'                => $this->status,
             ];
 
-            if ($this->gambar && is_object($this->gambar)) {
-                // hapus file lama kalau ada
-                if ($this->existingImage && Storage::disk('public')->exists('img/banners/' . $this->existingImage)) {
-                    Storage::disk('public')->delete('img/banners/' . $this->existingImage);
-                }
+            $this->price->update($data);
 
-                // upload baru → replace
-                $random   = rand(10000, 99999);
-                $filename = 'Banners_' . $random . '.' . $this->gambar->getClientOriginalExtension();
-                $this->gambar->storeAs('img/banners', $filename, 'public');
-                $data['gambar'] = $filename;
-            } else {
-                $data['gambar'] = $this->existingImage; // pakai gambar lama
-            }
-
-            $this->banners->update($data);
-
-            session()->flash('success', 'Perubahan Data Banners berhasil disimpan!');
-            $this->dispatch('Banners-updated');
+            session()->flash('success', 'Perubahan Data Paket berhasil disimpan!');
+            $this->dispatch('Price-updated');
             $this->resetForm();
 
-            return redirect()->route('admin.Banners.index');
+            return redirect()->route('admin.Paket.index');
         } catch (\Exception $e) {
-            session()->flash('error', 'Gagal mengupdate Data Banners: ' . $e->getMessage());
+            session()->flash('error', 'Gagal mengupdate Data Paket: ' . $e->getMessage());
         }
     }
 
     private function resetForm()
     {
-        $this->judul        = '';
-        $this->gambar       = '';
-        $this->deskripsi    = '';
-        $this->status       = '';
+        $this->nama_paket           = '';
+        $this->harga_awal           = '';
+        $this->harga_promo          = '';
+        $this->hemat_persentase     = '';
+        $this->best_price           = '';
+        $this->show_homepage        = '';
+        $this->deskripsi            = '';
+        $this->status               = '';
     }
 
     public function render()
     {
-        return view('livewire.pages.admin.banners.banners-form');
+        return view('livewire.pages.admin.price.Price-form');
     }
 }

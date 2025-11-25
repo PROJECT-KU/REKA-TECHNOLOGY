@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Livewire\Pages\Admin\Banners;
+namespace App\Livewire\Pages\Admin\Price;
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 
-class BannersCreate extends Component
+class PriceCreate extends Component
 {
     #[Layout('layouts.app')]
     public function render()
     {
-        return view('livewire.pages.admin.Banners.Banners-create');
+        return view('livewire.pages.admin.price.Price-create');
     }
 }
