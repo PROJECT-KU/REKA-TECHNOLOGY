@@ -3,7 +3,6 @@
 namespace App\Livewire\Pages\Admin\Portofolio;
 
 use App\Models\Portofolio;
-use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
@@ -61,23 +60,31 @@ class PortofolioForm extends Component
     private function createPortofolio()
     {
         try {
-            // generate nama unik dengan angka random
-            $random   = rand(10000, 99999);
-            $filename = 'Portofolio_' . $random . '.' . $this->gambar->getClientOriginalExtension();
 
-            // simpan file fisik ke folder storage/app/public/img/portofolio
-            $this->gambar->storeAs('img/portofolio', $filename, 'public');
+            if (!$this->gambar) {
+                throw new \Exception('File gambar tidak ditemukan.');
+            }
 
-            // simpan hanya nama file ke DB
+            // generate nama otomatis
+            $filename = $this->gambar->hashName();
+
+            // simpan file ke storage/app/public/img/portofolio
+            Storage::disk('public')->putFileAs(
+                'img/portofolio',
+                $this->gambar,
+                $filename
+            );
+
+            // simpan ke DB
             Portofolio::create([
-                'nama_project'      => $this->nama_project,
-                'nama_customer'     => $this->nama_customer,
-                'link_url'          => $this->link_url,
-                'deskripsi'         => $this->deskripsi,
-                'gambar'            => $filename,
+                'nama_project'  => $this->nama_project,
+                'nama_customer' => $this->nama_customer,
+                'link_url'      => $this->link_url,
+                'deskripsi'     => $this->deskripsi,
+                'gambar'        => $filename,
             ]);
 
-            session()->flash('success', 'Data Portofollio berhasil ditambahkan!');
+            session()->flash('success', 'Data Portofolio berhasil ditambahkan!');
             $this->dispatch('Portofolio-created');
             $this->resetForm();
 
@@ -98,18 +105,20 @@ class PortofolioForm extends Component
             ];
 
             if ($this->gambar && is_object($this->gambar)) {
-                // hapus file lama kalau ada
+
                 if ($this->existingImage && Storage::disk('public')->exists('img/portofolio/' . $this->existingImage)) {
                     Storage::disk('public')->delete('img/portofolio/' . $this->existingImage);
                 }
 
-                // upload baru → replace
-                $random   = rand(10000, 99999);
-                $filename = 'Portofolio_' . $random . '.' . $this->gambar->getClientOriginalExtension();
-                $this->gambar->storeAs('img/portofolio', $filename, 'public');
+                $filename = $this->gambar->hashName();
+
+                Storage::disk('public')->putFileAs(
+                    'img/portofolio',
+                    $this->gambar,
+                    $filename
+                );
+
                 $data['gambar'] = $filename;
-            } else {
-                $data['gambar'] = $this->existingImage; // pakai gambar lama
             }
 
             $this->portofolio->update($data);

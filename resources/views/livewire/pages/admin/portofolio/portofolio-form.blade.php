@@ -25,36 +25,21 @@
 
             <!-- Link Url -->
             <div class="col-md-6">
-                <label for="nama_customer" class="form-label">Link Url <span class="text-danger">*</span></label>
-                <input type="text" id="nama_customer" wire:model.defer="nama_customer"
-                    class="form-control @error('nama_customer') is-invalid @enderror"
-                    placeholder="Masukkan Nama Customer">
-                @error('nama_customer')
+                <label for="link_url" class="form-label">Link Url <span class="text-danger">*</span></label>
+                <input type="text" id="link_url" wire:model.defer="link_url"
+                    class="form-control @error('link_url') is-invalid @enderror"
+                    placeholder="Masukkan Link Url Project">
+                @error('link_url')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
-            <!-- Status -->
-            <div class="col-md-6">
-                <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
-                <select id="status" wire:model.defer="status"
-                    class="form-select @error('status') is-invalid @enderror">
-                    <option value="">-- Pilih Status --</option>
-                    <option value="active">Active</option>
-                    <option value="non-active">Non-Active</option>
-                </select>
-                @error('status')
-                <div class="invalid-feedback d-block">{{ $message }}</div>
-                @enderror
-            </div>
-
-
-            <!-- Gambar Banner -->
+            <!-- Gambar Portofolio -->
             <div class="col-md-12">
                 <div class="row">
                     <!-- Input -->
                     <div class="col-md-6">
-                        <label for="gambar" class="form-label">Gambar Banner <span class="text-danger">*</span></label>
+                        <label for="gambar" class="form-label">Gambar Portofolio <span class="text-danger">*</span></label>
                         <input type="file" id="gambar" wire:model="gambar"
                             class="form-control @error('gambar') is-invalid @enderror"
                             accept="image/png,image/jpg,image/jpeg">
@@ -70,20 +55,19 @@
                         </div>
 
                         @if ($gambar && is_object($gambar))
-                        <img src="{{ $gambar->temporaryUrl() }}" alt="Preview Banner"
+                        <img src="{{ $gambar->temporaryUrl() }}" alt="Preview Portofolio"
                             class="img-thumbnail" style="max-height: 200px;">
                         @elseif ($existingImage)
-                        <img src="{{ asset('storage/img/banners/' . $existingImage) }}" alt="Banner Lama"
+                        <img src="{{ asset('storage/img/portofolio/' . $existingImage) }}" alt="Portofolio Lama"
                             class="img-thumbnail" style="max-height: 200px;">
                         @else
                         <!-- Placeholder ketika belum ada gambar -->
-                        <img src="https://via.placeholder.com/200x150?text=Preview+Banner"
-                            alt="Preview Banner" class="img-thumbnail" style="max-height: 200px;">
+                        <img src="https://via.placeholder.com/200x150?text=Preview+Portofolio"
+                            alt="Preview Portofolio" class="img-thumbnail" style="max-height: 200px;">
                         @endif
                     </div>
                 </div>
             </div>
-
 
             <!-- Deskripsi -->
             <div class="col-12">
