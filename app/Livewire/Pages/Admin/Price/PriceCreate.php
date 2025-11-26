@@ -10,6 +10,6 @@ class PriceCreate extends Component
     #[Layout('layouts.app')]
     public function render()
     {
-        return view('livewire.pages.admin.price.Price-create');
+        return view('livewire.pages.admin.price.price-create');
     }
 }

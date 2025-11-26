@@ -18,7 +18,7 @@ class PriceEdit extends Component
     #[Layout('layouts.app')]
     public function render()
     {
-        return view('livewire.pages.admin.price.Price-edit', [
+        return view('livewire.pages.admin.price.price-edit', [
             'Price' => $this->Price,
         ]);
     }

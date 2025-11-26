@@ -3,7 +3,6 @@
 namespace App\Livewire\Pages\Admin\Price;
 
 use App\Models\Price;
-use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
@@ -63,10 +62,11 @@ class PriceForm extends Component
     private function createPrice()
     {
         try {
+
             Price::create([
                 'nama_paket'            => $this->nama_paket,
                 'harga_awal'            => $this->harga_awal,
-                'harga_promo'           => $this->harga_promo,
+                'harga_promo'           => $this->harga_promo, // ← sudah benar
                 'hemat_persentase'      => $this->hemat_persentase,
                 'best_price'            => $this->best_price,
                 'show_homepage'         => $this->show_homepage,
@@ -124,6 +124,6 @@ class PriceForm extends Component
 
     public function render()
     {
-        return view('livewire.pages.admin.price.Price-form');
+        return view('livewire.pages.admin.price.price-form');
     }
 }
