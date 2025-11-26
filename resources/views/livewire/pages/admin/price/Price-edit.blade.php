@@ -13,7 +13,7 @@
 
     <div class="card">
         <div class="card-body">
-            <livewire:pages.admin.price.Price-form :price="$Price" />
+            <livewire:pages.admin.Price.Price-form :price="$Price" />
         </div>
     </div>
 </div>

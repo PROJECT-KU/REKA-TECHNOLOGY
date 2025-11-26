@@ -16,6 +16,11 @@ use App\Livewire\Pages\Admin\Price\PriceList;
 use App\Livewire\Pages\Admin\Price\PriceCreate;
 use App\Livewire\Pages\Admin\Price\PriceEdit;
 
+// Data Portofolio
+use App\Livewire\Pages\Admin\Portofolio\PortofolioList;
+use App\Livewire\Pages\Admin\Portofolio\PortofolioCreate;
+use App\Livewire\Pages\Admin\Portofolio\PortofolioEdit;
+
 Route::get('/', Index::class)->name('homepage');
 
 Route::view('profile', 'profile')
@@ -40,6 +45,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/DataPaket', PriceList::class)->name('admin.Paket.index');
     Route::get('/admin/DataPaket/create', PriceCreate::class)->name('admin.Paket.create');
     Route::get('/admin/DataPaket/{Price}/edit', PriceEdit::class)->name('admin.Paket.edit');
+
+    // Data Portofolio
+    Route::get('/admin/DataPortofolio', PortofolioList::class)->name('admin.Portofolio.index');
+    Route::get('/admin/DataPortofolio/create', PortofolioCreate::class)->name('admin.Portofolio.create');
+    Route::get('/admin/DataPortofolio/{Portofolio}/edit', PortofolioEdit::class)->name('admin.Portofolio.edit');
 });
 
 require __DIR__ . '/auth.php';

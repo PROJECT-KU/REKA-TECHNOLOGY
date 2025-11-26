@@ -37,16 +37,12 @@ new class extends Component {
                     </a>
                 </li>
 
-                <li class="sidebar-item has-sub 
-    {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') ? 'active open' : '' }}">
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') ? 'active open' : '' }}">
 
                     <a href="javascript:void(0)"
-                        class="sidebar-link 
-       {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') ? 'text-primary fw-bold' : '' }}">
-                        <i class="bi bi-globe-americas 
-           {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') ? 'text-primary' : '' }}"></i>
-                        <span class="
-           {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') ? 'text-primary' : '' }}">
+                        class="sidebar-link {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') ? 'text-primary fw-bold' : '' }}">
+                        <i class="bi bi-globe-americas {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') ? 'text-primary' : '' }}"></i>
+                        <span class="{{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') ? 'text-primary' : '' }}">
                             Data Public
                         </span>
                     </a>
@@ -62,6 +58,12 @@ new class extends Component {
                         <li class="submenu-item {{ request()->routeIs('admin.Paket.*') ? 'active' : '' }}">
                             <a wire:navigate href="{{ route('admin.Paket.index') }}" class="submenu-link">
                                 Data Paket
+                            </a>
+                        </li>
+
+                        <li class="submenu-item {{ request()->routeIs('admin.Portofolio.*') ? 'active' : '' }}">
+                            <a wire:navigate href="{{ route('admin.Portofolio.index') }}" class="submenu-link">
+                                Portofolio
                             </a>
                         </li>
 

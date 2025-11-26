@@ -1,8 +1,8 @@
 <div>
     <div class="d-flex mb-2 align-items-center justify-content-between">
-        <h3>Data Paket</h3>
+        <h3>Data Portofolio</h3>
         @php
-        $breadcrumbs = [['name' => 'Beranda', 'url' => route('admin.dashboard')], ['name' => 'Data Paket']];
+        $breadcrumbs = [['name' => 'Beranda', 'url' => route('admin.dashboard')], ['name' => 'Data Portofolio']];
         @endphp
         <x-breadcrumb :items="$breadcrumbs" />
     </div>
@@ -10,73 +10,83 @@
         <div class="card-body">
             <div class="d-flex align-items-center justify-content-between mb-2">
                 <div class="form-group position-relative has-icon-left w-50 w-lg-25">
-                    <input wire:model.live.debounce.300ms="searchPrice" type="text" class="form-control"
+                    <input wire:model.live.debounce.300ms="searchBanners" type="text" class="form-control"
                         placeholder="ketik Judul Banner, Status..">
                     <div class="form-control-icon">
                         <i class="bi bi-search" style="font-size: 14px;"></i>
                     </div>
                 </div>
-                <a wire:navigate href="{{ route('admin.Paket.create') }}" class="btn btn-primary rounded-pill px-4">
+                <a wire:navigate href="{{ route('admin.Portofolio.create') }}" class="btn btn-primary rounded-pill px-4">
                     <i class="bi bi-plus-lg"></i>
-                    <span>Tambah Data Paket</span>
+                    <span>Tambah Data Portofolio</span>
                 </a>
             </div>
             <div class="table-responsive">
                 <table id="productTable" class="table table-striped align-middle nowrap" style="width:100%">
                     <thead class="table-light text-center">
                         <tr>
-                            <th>Nama Paket</th>
-                            <th>Harga Awal</th>
-                            <th>Harga Promo</th>
-                            <th>Persentase Hemat</th>
-                            <th>Best Price</th>
-                            <th>Show Homepage</th>
-                            <th>Status</th>
+                            <th>Nama Project</th>
+                            <th>Nama Customer</th>
+                            <th>Link Url</th>
+                            <th>Deskripsi</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($Price as $item)
+                        @forelse ($Portofolio as $item)
                         <tr style="text-align: center;">
+                            <td>{{ $item->nama_project }}</td>
 
-                            <td class="text-truncate" style="max-width: 200px;">
-                                {{ $item->nama_paket }}
+                            <td class="text-center">
+                                @if ($item->gambar)
+                                <img src="{{ asset('storage/img/portofolio/' . $item->gambar) }}"
+                                    alt="Portofolio"
+                                    class="img-thumbnail"
+                                    style="width: 80px; cursor: pointer;"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#portofolioModal{{ $item->id }}">
+                                @else
+                                <span class="text-muted">Tidak ada gambar</span>
+                                @endif
+
+                                <!-- Modal Bootstrap -->
+                                @if ($item->gambar)
+                                <div class="modal fade" id="portofolioModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-body text-center p-0">
+                                                <img src="{{ asset('storage/img/portofolio/' . $item->gambar) }}"
+                                                    alt="Banner {{ $item->judul }}"
+                                                    class="img-fluid rounded">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
                             </td>
 
                             <td class="text-truncate" style="max-width: 200px;">
-                                {{ $item->harga_awal }}
+                                {{ $item->nama_customer }}
                             </td>
 
                             <td class="text-truncate" style="max-width: 200px;">
-                                {{ $item->harga_promo }}
+                                {{ $item->link_url }}
                             </td>
-
                             <td class="text-truncate" style="max-width: 200px;">
-                                {{ $item->hemat_persentase }}%
-                            </td>
-
-                            <td class="text-truncate" style="max-width: 200px;">
-                                {{ $item->best_price }}
-                            </td>
-
-                            <td class="text-truncate" style="max-width: 200px;">
-                                {{ $item->show_homepage }}
+                                {{ $item->deskripsi }}
                             </td>
 
                             <td class="text-center">
-                                <span class="badge {{ $item->status === 'active' ? 'bg-success' : 'bg-danger' }}">
-                                    {{ ucfirst($item->status) }}
-                                </span>
-                            </td>
-
-                            <td class="text-center">
-                                <a wire:navigate href="{{ route('admin.Paket.edit', $item) }}"
+                                <a wire:navigate href="{{ route('admin.Portofolio.edit', $item) }}"
                                     class="btn btn-warning btn-sm me-1"
                                     title="Edit">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
                                 <button type="button"
-                                    class="btn btn-danger btn-sm delete-Price-btn"
+                                    class="btn btn-danger btn-sm delete-Banners-btn"
                                     data-id="{{ $item->id }}">
                                     <i class="bi bi-trash"></i>
                                 </button>
@@ -86,7 +96,7 @@
                         @empty
                         <tr>
                             <td colspan="9" class="text-center text-muted">
-                                Belum ada data paket
+                                Belum ada data portofolio
                             </td>
                         </tr>
                         @endforelse
@@ -95,7 +105,7 @@
             </div>
 
             <div class="mt-4">
-                {{ $Price->links('vendor.pagination') }}
+                {{ $Portofolio->links('vendor.pagination') }}
             </div>
         </div>
     </div>
@@ -105,10 +115,10 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
-        document.querySelectorAll('.delete-Price-btn').forEach(button => {
+        document.querySelectorAll('.delete-Banners-btn').forEach(button => {
             button.addEventListener('click', function(event) {
                 event.preventDefault();
-                const PriceId = button.getAttribute('data-id');
+                const BannersId = button.getAttribute('data-id');
 
                 Swal.fire({
                     title: 'Yakin hapus Data Akun?',
@@ -120,13 +130,13 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         const livewireComponentId = button.closest('[wire\\:id]').getAttribute('wire:id');
-                        Livewire.find(livewireComponentId).call('deletePrice', PriceId);
+                        Livewire.find(livewireComponentId).call('deleteBanners', BannersId);
                     }
                 });
             });
         });
 
-        window.addEventListener('Price-deleted', () => {
+        window.addEventListener('Banners-deleted', () => {
             Swal.fire({
                 title: 'Terhapus!',
                 text: 'Data Akun berhasil dihapus.',

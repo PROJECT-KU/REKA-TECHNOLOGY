@@ -46,28 +46,6 @@
     <!--================== SWEET ALERT ==================-->
     @push('scripts')
     <script>
-        window.addEventListener("load", function() {
-            @if(session('success'))
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil!',
-                text: '{{ session('
-                success ') }}',
-                timer: 2000,
-                showConfirmButton: false
-            });
-            @endif
-
-            @if(session('error'))
-            Swal.fire({
-                icon: 'error',
-                title: 'Gagal!',
-                text: '{{ session('
-                error ') }}'
-            });
-            @endif
-        });
-
         document.addEventListener('show-alert', function(event) {
             const detail = event.detail[0] || event.detail;
 
@@ -134,6 +112,13 @@
             });
         });
     </script>
+    <script>
+        window.flash = {
+            success: @json(session('success')),
+            error: @json(session('error'))
+        };
+    </script>
+
     @endpush
     <!--================== END ==================-->
 
@@ -143,7 +128,7 @@
     <script src="{{ asset('mazer/compiled/js/app.js') }}"></script>
     <script src="{{ asset('mazer/compiled/js/custom.js') }}"></script>
     <script src="{{ asset('mazer/compiled/js/DataAkun-delete.js') }}"></script>
-
+    <script src="{{ asset('mazer/compiled/js/sweetalert.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @stack('scripts')
