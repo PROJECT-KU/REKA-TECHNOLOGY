@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nama_customer')->nullable();
             $table->string('link_url')->nullable();
             $table->text('deskripsi')->nullable();
-            $table->text('gambar')->nullable();
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }

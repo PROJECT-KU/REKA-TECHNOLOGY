@@ -35,9 +35,7 @@
                     <tbody>
                         @forelse ($Portofolio as $item)
                         <tr style="text-align: center;">
-                            <td>{{ $item->nama_project }}</td>
-
-                            <td class="text-center">
+                            <td>
                                 @if ($item->gambar)
                                 <img src="{{ asset('storage/img/portofolio/' . $item->gambar) }}"
                                     alt="Portofolio"
@@ -66,6 +64,7 @@
                                     </div>
                                 </div>
                                 @endif
+                                {{ $item->nama_project }}
                             </td>
 
                             <td class="text-truncate" style="max-width: 200px;">
