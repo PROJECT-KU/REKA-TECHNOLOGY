@@ -1,0 +1,25 @@
+.shape-flower {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 450px;
+    height: 450px;
+    z-index: -1;
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+.shape-flower span {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    background: rgba(14, 116, 144);
+    border-radius: 60% 40% 70% 30%;
+    filter: blur(25px);
+}
+
+/* Kelopak “bunga abstrak” */
+.shape-flower .p1 { top: 10px; left: 110px; transform: rotate(20deg); }
+.shape-flower .p2 { top: 110px; left: 0; transform: rotate(70deg); }
+.shape-flower .p3 { top: 110px; right: 0; transform: rotate(130deg); }
+.shape-flower .p4 { bottom: 10px; left: 110px; transform: rotate(210deg); }

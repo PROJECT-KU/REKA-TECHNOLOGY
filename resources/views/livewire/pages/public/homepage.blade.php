@@ -210,7 +210,14 @@ Beranda | Reka Technology
   <!--================== HARGA ==================-->
   <div id="pricing" class="pricing-tables">
     <div class="tables-left-dec">
-      <img src="{{ asset('onix/assets/images/tables-left-dec.png') }}" alt="">
+      {{-- <img src="{{ asset('onix/assets/images/tables-left-dec.png') }}" alt=""> --}}
+      <div class="shape-flower">
+          <span class="p1"></span>
+          <span class="p2"></span>
+          <span class="p3"></span>
+          <span class="p4"></span>
+      </div>
+
     </div>
     <div class="tables-right-dec">
       <img src="{{ asset('onix/assets/images/tables-right-dec.png') }}" alt="">

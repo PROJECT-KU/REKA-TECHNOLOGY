@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('onix/assets/css/templatemo-onix-digital.css') }}">
     <link rel="stylesheet" href="{{ asset('onix/assets/css/animated.css') }}">
     <link rel="stylesheet" href="{{ asset('onix/assets/css/owl.css') }}">
+    <link rel="stylesheet" href="{{ asset('onix/assets/css/custom.css') }}">
 
 </head>
 
