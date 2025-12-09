@@ -37,12 +37,12 @@ new class extends Component {
                     </a>
                 </li>
 
-                <li class="sidebar-item has-sub {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') ? 'active open' : '' }}">
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') || request()->routeIs('admin.project.*') ? 'active open' : ''}}">
 
                     <a href="javascript:void(0)"
-                        class="sidebar-link {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') ? 'text-primary fw-bold' : '' }}">
-                        <i class="bi bi-globe-americas {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') ? 'text-primary' : '' }}"></i>
-                        <span class="{{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') ? 'text-primary' : '' }}">
+                        class="sidebar-link {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') || request()->routeIs('admin.project.*') ? 'text-primary fw-bold' : '' }}">
+                        <i class="bi bi-globe-americas {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') || request()->routeIs('admin.project.*') ? 'text-primary' : '' }}"></i>
+                        <span class="{{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') || request()->routeIs('admin.project.*') ? 'text-primary' : '' }}">
                             Data Public
                         </span>
                     </a>
@@ -64,6 +64,12 @@ new class extends Component {
                         <li class="submenu-item {{ request()->routeIs('admin.Portofolio.*') ? 'active' : '' }}">
                             <a wire:navigate href="{{ route('admin.Portofolio.index') }}" class="submenu-link">
                                 Portofolio
+                            </a>
+                        </li>
+
+                        <li class="submenu-item {{ request()->routeIs('admin.project.*') ? 'active' : '' }}">
+                            <a wire:navigate href="{{ route('admin.project.index') }}" class="submenu-link">
+                                Project
                             </a>
                         </li>
 
