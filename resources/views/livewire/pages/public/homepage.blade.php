@@ -2,6 +2,12 @@
 Beranda | Reka Technology
 @endsection
 
+@php
+function convertToEmbed($url) {
+    return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
+}
+@endphp
+
 <main class="main">
 
   <!--================== BANNER ==================-->
@@ -503,98 +509,51 @@ Beranda | Reka Technology
               <div class="row">
                 <div class="col-lg-8">
                   <ul class="nacc">
-                    <li class="active">
+                    @foreach ($project as $index => $item)
+                    <li class="{{ $index == 0 ? 'active' : '' }}">
                       <div>
                         <div class="thumb">
-                          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/JynGuQx4a1Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          @if (!empty($item->video_url))
+                              <div class="video-container">
+                                  <iframe src="https://www.youtube.com/embed/{{ \Illuminate\Support\Str::after($item->video_url, 'v=') }}"
+                                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                          allowfullscreen>
+                                  </iframe>
+                              </div>
+                          @elseif(!empty($item->video))
+                              <div class="video-container">
+                                  <video controls>
+                                      <source src="{{ asset('storage/videos/project/' . $item->video) }}" type="video/mp4">
+                                      Browser Anda tidak mendukung video.
+                                  </video>
+                              </div>
+                          @else
+                              <p class="text-muted">Tidak ada video</p>
+                          @endif
                           <div class="overlay-effect">
                             <a href="#">
-                              <h4>Project One</h4>
+                              <h4>{{ $item->judul }}</h4>
                             </a>
-                            <span>SEO &amp; Marketing</span>
+                            <span>{{ $item->caption }}</span>
                           </div>
                         </div>
                       </div>
                     </li>
-                    <li>
-                      <div>
-                        <div class="thumb">
-                          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/RdJBSFpcO4M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                          <div class="overlay-effect">
-                            <a href="#">
-                              <h4>Second Project</h4>
-                            </a>
-                            <span>Advertising &amp; Marketing</span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="thumb">
-                          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/ZlfAjbQiL78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                          <div class="overlay-effect">
-                            <a href="#">
-                              <h4>Project Three</h4>
-                            </a>
-                            <span>Digital &amp; Marketing</span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div>
-                        <div class="thumb">
-                          <iframe width="100%" height="auto" src="https://www.youtube.com/embed/mx1WseE7-0Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                          <div class="overlay-effect">
-                            <a href="#">
-                              <h4>Fourth Project</h4>
-                            </a>
-                            <span>SEO &amp; Advertising</span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
+                    @endforeach
                   </ul>
                 </div>
                 <div class="col-lg-4">
                   <div class="menu">
-                    <div class="active">
+                    @foreach ($project as $index => $item)
+                    <div class="{{ $index == 0 ? 'active' : '' }}">
                       <div class="thumb">
-                        <img src="{{ asset('onix/assets/images/video-thumb-01.png') }}" alt="">
+                        <img src="{{ asset('storage/img/project/' . $item->thumbnail) }}" alt="{{ $item->judul }}" style="height:120px; object-fit:cover; border-radius:8px">
                         <div class="inner-content">
-                          <h4>Project One</h4>
-                          <span>SEO &amp; Marketing</span>
+                          <h4>{{ $item->judul }}</h4>
                         </div>
                       </div>
                     </div>
-                    <div>
-                      <div class="thumb">
-                        <img src="{{ asset('onix/assets/images/video-thumb-02.png') }}" alt="">
-                        <div class="inner-content">
-                          <h4>Second Project</h4>
-                          <span>Advertising &amp; Marketing</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="thumb">
-                        <img src="{{ asset('onix/assets/images/video-thumb-03.png') }}" alt="Marketing">
-                        <div class="inner-content">
-                          <h4>Project Three</h4>
-                          <span>Digital &amp; Marketing</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="thumb">
-                        <img src="{{ asset('onix/assets/images/video-thumb-04.png') }}" alt="SEO Work">
-                        <div class="inner-content">
-                          <h4>Fourth Project</h4>
-                          <span>SEO &amp; Advertising</span>
-                        </div>
-                      </div>
-                    </div>
+                    @endforeach
                   </div>
                 </div>
               </div>

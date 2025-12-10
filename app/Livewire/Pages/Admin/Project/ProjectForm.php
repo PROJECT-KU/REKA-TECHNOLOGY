@@ -42,7 +42,7 @@ class ProjectForm extends Component
             'judul'      => 'required|min:3',
             'caption'    => 'nullable|string',
             'status'     => 'required|in:active,non-active',
-            'video_url'  => 'nullable|url',
+            'video_url'  => 'nullable|string|max:255',
         ];
 
         $rules['thumbnail'] = $this->mode === 'create'

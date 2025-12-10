@@ -19,7 +19,46 @@
 }
 
 /* Kelopak “bunga abstrak” */
-.shape-flower .p1 { top: 10px; left: 110px; transform: rotate(20deg); }
-.shape-flower .p2 { top: 110px; left: 0; transform: rotate(70deg); }
-.shape-flower .p3 { top: 110px; right: 0; transform: rotate(130deg); }
-.shape-flower .p4 { bottom: 10px; left: 110px; transform: rotate(210deg); }
+.shape-flower .p1 {
+    top: 10px;
+    left: 110px;
+    transform: rotate(20deg);
+}
+.shape-flower .p2 {
+    top: 110px;
+    left: 0;
+    transform: rotate(70deg);
+}
+.shape-flower .p3 {
+    top: 110px;
+    right: 0;
+    transform: rotate(130deg);
+}
+.shape-flower .p4 {
+    bottom: 10px;
+    left: 110px;
+    transform: rotate(210deg);
+}
+
+/* aturan pada tampilan youtube */
+.video-container {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+    padding-top: 56.25%;
+}
+
+.video-container iframe,
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    object-fit: cover;
+}

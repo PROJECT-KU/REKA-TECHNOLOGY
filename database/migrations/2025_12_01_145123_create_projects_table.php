@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('thumbnail')->nullable();
             $table->text('caption')->nullable();
             $table->text('video')->nullable();
+            $table->text('video_url')->nullable();
             $table->enum('status', ['active', 'non-active'])->nullable();
             $table->timestamps();
         });

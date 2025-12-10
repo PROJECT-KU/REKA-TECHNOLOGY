@@ -42,6 +42,7 @@
                             <th>Thumbnail</th>
                             <th>Caption</th>
                             <th>Video</th>
+                            <th>Link Url</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -116,6 +117,11 @@
                                 @endif
                             </td>
 
+                            <!-- Link Url -->
+                            <td class="text-truncate" style="max-width:100px;">
+                                {{ $item->video_url }}
+                            </td>
+
                             <!-- Status -->
                             <td>
                                 <span class="badge {{ $item->status === 'active' ? 'bg-success' : 'bg-danger' }}">
@@ -139,7 +145,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="6" class="text-center text-muted py-4">
+                            <td colspan="7" class="text-center text-muted py-4">
                                 Belum ada data project.
                             </td>
                         </tr>
