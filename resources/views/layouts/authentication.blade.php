@@ -33,6 +33,7 @@
     <script src="{{ asset('mazer/static/js/components/dark.js') }}"></script>
     <script src="{{ asset('mazer/compiled/js/app.js') }}"></script>
     <script src="{{ asset('mazer/compiled/js/custom.js') }}"></script>
+    <script src="{{ asset('mazer/compiled/js/sweetalert.js') }}"></script>
     <script src="{{ asset('mazer/compiled/js/DataAkun-delete.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
