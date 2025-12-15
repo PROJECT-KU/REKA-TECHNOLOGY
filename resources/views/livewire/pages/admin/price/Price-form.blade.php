@@ -99,7 +99,7 @@
                     <div id="chip-container" class="d-flex flex-wrap gap-1 mb-2">
                         <!-- Chips will be added here dynamically -->
                     </div>
-                    <input type="text" id="chip-input" class="form-control border-0 p-0" placeholder="Tambahkan tag dan tekan Enter" style="outline: none; box-shadow: none;">
+                    <input type="text" id="chip-input" class="form-control border-0 p-0" placeholder="Tambahkan tag dan tekan Enter" wire:keydown.enter.prevent style="outline: none; box-shadow: none;">
                 </div>
                 <input type="hidden" wire:model.defer="deskripsi" id="deskripsi-hidden">
                 @error('deskripsi')
