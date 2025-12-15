@@ -51,7 +51,7 @@ class PriceList extends Component
             ->latest()
             ->paginate(10);
 
-        return view('livewire.pages.admin.price.Price-list', [
+        return view('livewire.pages.admin.price.price-list', [
             'Price' => $Price,
         ]);
     }

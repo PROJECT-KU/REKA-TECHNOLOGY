@@ -13,6 +13,18 @@ use App\Livewire\Pages\Admin\Banners\BannersList;
 
 // Data Paket
 use App\Livewire\Pages\Admin\Price\PriceList;
+use App\Livewire\Pages\Admin\Price\PriceCreate;
+use App\Livewire\Pages\Admin\Price\PriceEdit;
+
+// Data Portofolio
+use App\Livewire\Pages\Admin\Portofolio\PortofolioList;
+use App\Livewire\Pages\Admin\Portofolio\PortofolioCreate;
+use App\Livewire\Pages\Admin\Portofolio\PortofolioEdit;
+
+//Data Project
+use App\Livewire\Pages\Admin\Project\ProjectCreate;
+use App\Livewire\Pages\Admin\Project\ProjectList;
+use App\Livewire\Pages\Admin\Project\ProjectEdit;
 
 Route::get('/', Index::class)->name('homepage');
 
@@ -36,6 +48,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Data Paket
     Route::get('/admin/DataPaket', PriceList::class)->name('admin.Paket.index');
+    Route::get('/admin/DataPaket/create', PriceCreate::class)->name('admin.Paket.create');
+    Route::get('/admin/DataPaket/{Price}/edit', PriceEdit::class)->name('admin.Paket.edit');
+
+    // Data Portofolio
+    Route::get('/admin/DataPortofolio', PortofolioList::class)->name('admin.Portofolio.index');
+    Route::get('/admin/DataPortofolio/create', PortofolioCreate::class)->name('admin.Portofolio.create');
+    Route::get('/admin/DataPortofolio/{Portofolio}/edit', PortofolioEdit::class)->name('admin.Portofolio.edit');
+
+    // Data Project
+    Route::get('/admin/Project', ProjectList::class)->name('admin.project.index');
+    Route::get('/admin/Project/create', ProjectCreate::class)->name('admin.project.create');
+    Route::get('/admin/Project/{project}/edit', ProjectEdit::class)->name('admin.project.edit');
 });
 
 require __DIR__ . '/auth.php';
