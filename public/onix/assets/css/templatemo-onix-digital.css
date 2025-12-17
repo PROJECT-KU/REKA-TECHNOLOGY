@@ -1806,16 +1806,16 @@ contact
 }
 
 form#contact {
-    margin-left: -100px;
-    position: relative;
-    z-index: 2;
-    background-image: url(../images/contact-form-bg.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    padding: 60px 120px;
-    border-radius: 20px;
+  margin-left: -100px;
+  position: relative;
+  z-index: 2;
+  background-image: url(../images/kontak.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+  padding: 60px 120px;
+  border-radius: 20px;
 }
 
 form#contact input {

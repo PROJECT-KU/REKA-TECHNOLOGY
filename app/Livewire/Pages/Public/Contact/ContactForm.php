@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Livewire\Pages\Public\Homepage;
+namespace App\Livewire\Pages\Public\Contact;
 
-use App\Models\Banners;
 use App\Models\Price;
 use App\Models\Project;
 use App\Models\Contact;
@@ -10,7 +9,7 @@ use App\Models\Portofolio;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-class Index extends Component
+class ContactForm extends Component
 {
     #[Layout('layouts.guest')]
     public $nama, $telp, $email, $pesan;
@@ -24,10 +23,22 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.pages.public.homepage', [
-            'project' => Project::where('status', 'active')->get(),
-            'banner' => Banners::where('status', 'active')->get(),
-            'harga' => Price::where('status', 'active')->latest()->take(3)->get()
+        return view('livewire.pages.public.contact-form');
+    }
+
+    public function submitContact()
+    {
+        $this->validate();
+
+        Contact::create([
+            'nama'    => $this->nama,
+            'telp' => $this->telp,
+            'email'   => $this->email,
+            'pesan' => $this->pesan,
         ]);
+
+        $this->reset();
+
+        $this->dispatch('contact-success');
     }
 }

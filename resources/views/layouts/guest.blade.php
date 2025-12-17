@@ -54,14 +54,24 @@
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="/" class="{{request()->routeIs('homepage') ? 'active' : ''}}">Home</a></li>
-                            <li class="scroll-to-section"><a class="{{request()->routeIs('services.*') ? 'active' : ''}}">Services</a></li>
-                            <li class="scroll-to-section"><a class="{{request()->routeIs('about.*') ? 'active' : ''}}">About</a></li>
-                            <li class="scroll-to-section"><a class="{{request()->routeIs('portfolio.*') ? 'active' : ''}}">Portfolio</a></li>
-                            <li class="scroll-to-section"><a class="{{request()->routeIs('video.*') ? 'active' : ''}}">Videos</a></li>
-                            <li class="scroll-to-section"><a class="{{request()->routeIs('contact.*') ? 'active' : ''}}">Contact Us</a></li>
+                            <li class="scroll-to-section"><a href="/" class="{{request()->routeIs('homepage') ? 'active' : ''}}">Beranda</a></li>
                             <li class="scroll-to-section">
-                                <div class="main-red-button-hover"><a href="#contact">Contact Us Now</a></div>
+                                <a href="{{ route('services') }}"
+                                    class="{{ request()->routeIs('services') ? 'active' : '' }}">
+                                    Layanan Kami
+                                </a>
+                            </li>
+                            <li class="scroll-to-section">
+                                <a href="{{ route('portofolio') }}"
+                                    class="{{ request()->routeIs('portofolio') ? 'active' : '' }}">
+                                    Portofolio
+                                </a>
+                            </li>
+                            <li class="scroll-to-section">
+                                <div class="main-red-button-hover"> <a href="{{ route('contact') }}"
+                                        class="{{ request()->routeIs('contact') ? 'active' : '' }}">
+                                        Kontak Kami
+                                    </a></div>
                             </li>
                         </ul>
                         <a class='menu-trigger'>
@@ -115,7 +125,7 @@
                                     <li><a href="#">Optimasi Kecepatan Website</a></li>
                                     <li><a href="#">Pengelolaan Konten Sosial Media</a></li>
                                     <li><a href="#">Edit Video</a></li>
-                                    <li><a href="#">erawatan & Monitoring Website</a></li>
+                                    <li><a href="#">Perawatan & Monitoring Website</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -132,16 +142,7 @@
                         </ul>
                     </div>
                 </div> -->
-                <div class="col-lg-3">
-                    <div class="subscribe-newsletters footer-item">
-                        <h4>Daftar Newsletter</h4>
-                        <p>Jangan lewatkan promo, info penting, dan tips teknologi terbaru dari kami</p>
-                        <form action="#" method="get">
-                            <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
-                            <button type="submit" id="form-submit" class="main-button "><i class="fa fa-paper-plane-o"></i></button>
-                        </form>
-                    </div>
-                </div>
+                <livewire:pages.public.newsletter.newsletter-form />
                 <div class="col-lg-12">
                     <div class="copyright">
                         <p>Copyright © {{ date('Y') }} Reka Technology. All Rights Reserved.</p>
@@ -159,6 +160,7 @@
     <script src="{{ asset('onix/assets/js/animation.js') }}"></script>
     <script src="{{ asset('onix/assets/js/imagesloaded.js') }}"></script>
     <script src="{{ asset('onix/assets/js/custom.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         // Acc
@@ -179,6 +181,21 @@
             }
         });
     </script>
+
+    <!--================== SWEETALERT2 UNTUK NOTIFIKASI ==================-->
+    <script>
+        document.addEventListener('livewire:init', () => {
+            Livewire.on('newsletter-success', () => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: 'Email newsletter Anda berhasil disimpan.',
+                    confirmButtonText: 'OK'
+                })
+            })
+        })
+    </script>
+    <!--================== END ==================-->
 
 </body>
 
