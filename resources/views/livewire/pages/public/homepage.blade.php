@@ -10,12 +10,12 @@ function convertToEmbed($url) {
 
 <main class="main">
 
+  @foreach ($banner as $index => $item)
   <!--================== BANNER ==================-->
-  <div class="main-banner" id="top">
+  <div class="main-banner" id="top" style="--banner-bg: url('{{ asset('storage/img/banners/' . $item->gambar) }}');">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <div class="row">
             <div class="col-lg-6 align-self-center">
               <div class="owl-carousel owl-banner">
                 <div class="item header-text">
@@ -65,6 +65,7 @@ function convertToEmbed($url) {
     </div>
   </div>
   <!--================== END ==================-->
+  @endforeach
 
   <!--================== SERVICE ==================-->
   <div id="services" class="our-services section">
@@ -238,54 +239,24 @@ function convertToEmbed($url) {
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-4">
-          <div class="item first-item">
-            <h4>Starter Plan</h4>
-            <em>$160/mo</em>
-            <span>$140</span>
-            <ul>
-              <li>10 Projects</li>
-              <li>100 GB space</li>
-              <li>20 SEO checkups</li>
-              <li>Basic Support</li>
-            </ul>
-            <div class="main-blue-button-hover">
-              <a href="#">Get Started</a>
+        @foreach($harga as $index => $item)
+          <div class="col-lg-4">
+            <div class="item first-item">
+              <h4>{{ $item->nama_paket }}</h4>
+              <em>{{ $item->harga_awal }}</em>
+              <span>{{ $item->harga_promo }}</span>
+              <ul>
+                <li>10 Projects</li>
+                <li>100 GB space</li>
+                <li>20 SEO checkups</li>
+                <li>Basic Support</li>
+              </ul>
+              <div class="main-blue-button-hover">
+                <a href="#">Get Started</a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item second-item">
-            <h4>Standard Plan</h4>
-            <em>$240/mo</em>
-            <span>$200</span>
-            <ul>
-              <li>20 Projects</li>
-              <li>200 GB space</li>
-              <li>50 SEO checkups</li>
-              <li>Pro Support</li>
-            </ul>
-            <div class="main-blue-button-hover">
-              <a href="#">Get it Now</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item third-item">
-            <h4>Advanced Plan</h4>
-            <em>$360/mo</em>
-            <span>$280</span>
-            <ul>
-              <li>30 Projects</li>
-              <li>300 GB space</li>
-              <li>100 SEO checkups</li>
-              <li>Best Support</li>
-            </ul>
-            <div class="main-blue-button-hover">
-              <a href="#">Buy Now</a>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
   </div>
