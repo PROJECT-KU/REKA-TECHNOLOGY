@@ -10,6 +10,7 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
 
 <main class="main">
 
+  @foreach ($banner as $index => $item)
   <!--================== CSS UNTUK PRICE PAKET ==================-->
   <style>
     /* ===============================
@@ -187,11 +188,10 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
   <!--================== END ==================-->
 
   <!--================== BANNER ==================-->
-  <div class="main-banner" id="top">
+  <div class="main-banner" id="top" style="--banner-bg: url('{{ asset('storage/img/banners/' . $item->gambar) }}');">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <div class="row">
             <div class="col-lg-6 align-self-center">
               <div class="owl-carousel owl-banner">
                 <div class="item header-text">
@@ -241,6 +241,7 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
     </div>
   </div>
   <!--================== END ==================-->
+  @endforeach
 
   <!--================== SERVICE ==================-->
   <div id="services" class="our-services section">
