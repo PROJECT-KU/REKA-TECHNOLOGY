@@ -4,27 +4,203 @@ Beranda | Reka Technology
 
 @php
 function convertToEmbed($url) {
-    return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
+return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
 }
 @endphp
 
 <main class="main">
 
+  @foreach ($banner as $index => $item)
+  <!--================== CSS UNTUK PRICE PAKET ==================-->
+  <style>
+    /* ===============================
+    PRICING FEATURES LIST
+    ================================ */
+    .pricing-features {
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    .pricing-features li {
+      list-style: none;
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px;
+    }
+
+    .pricing-features li+li {
+      margin-top: 15px;
+    }
+
+
+    /* ===============================
+    CLOUD ICON (CHECKLIST)
+    ================================ */
+    .cloud-icon {
+      position: relative;
+      width: 24px;
+      height: 18px;
+      background: #eaf5ff;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Awan */
+    .cloud-icon::before,
+    .cloud-icon::after {
+      content: "";
+      position: absolute;
+      background: #eaf5ff;
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .cloud-icon::before {
+      width: 12px;
+      height: 12px;
+      top: -6px;
+      left: 2px;
+    }
+
+    .cloud-icon::after {
+      width: 14px;
+      height: 14px;
+      top: -8px;
+      right: 2px;
+    }
+
+    /* Ceklis */
+    .cloud-icon::after {
+      content: "✓";
+      background: transparent;
+      color: #4da6e7;
+      font-size: 10px;
+      font-weight: bold;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+
+    /* ===============================
+    PRICING CARD LAYOUT
+    ================================ */
+    .pricing-tables {
+      display: flex;
+    }
+
+    .pricing-tables .item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border: 1px solid #eee;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    /* Tombol selalu di bawah */
+    .pricing-tables .main-blue-button-hover {
+      margin-top: auto;
+    }
+
+
+    /* ===============================
+    BEST PRICE BADGE
+    ================================ */
+    .pricing-tables .badge-best {
+      position: absolute;
+      top: 0;
+      right: 14px;
+      transform: translateY(-50%);
+
+      display: inline-block;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.2;
+
+      background: #4da6e7;
+      color: #fff;
+      border-radius: 30px;
+      text-transform: uppercase;
+      z-index: 5;
+    }
+
+
+    /* ===============================
+    HIGHLIGHT BEST PRICE CARD
+    ================================ */
+    .pricing-tables .item.best-price {
+      border: 2px solid #4da6e7;
+      box-shadow: 0 20px 40px rgba(77, 166, 231, 0.25);
+      transform: translateY(-6px);
+    }
+
+    .pricing-tables .item.best-price:hover {
+      box-shadow: 0 28px 60px rgba(77, 166, 231, 0.35);
+    }
+
+
+    /* ===============================
+    BADGE HEMAT
+    ================================ */
+    .pricing-tables .badge-hemat {
+      position: absolute;
+      top: 0;
+      transform: translateY(-50%);
+
+      display: inline-block;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+
+      background: #498d32;
+      color: #fff;
+      border-radius: 30px;
+      z-index: 5;
+    }
+
+    /* Tanpa best price */
+    .pricing-tables .item:not(.best-price) .badge-hemat {
+      right: 14px;
+    }
+
+    /* Dengan best price */
+    .pricing-tables .item.best-price .badge-hemat {
+      right: 130px;
+    }
+
+
+    /* ===============================
+    NAMA PAKET
+    ================================ */
+    .pricing-tables .item h4 {
+      position: relative;
+      top: -10px;
+    }
+  </style>
+  <!--================== END ==================-->
+
   <!--================== BANNER ==================-->
-  <div class="main-banner" id="top">
+  <div class="main-banner" id="top" style="--banner-bg: url('{{ asset('storage/img/banners/' . $item->gambar) }}');">
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <div class="row">
             <div class="col-lg-6 align-self-center">
               <div class="owl-carousel owl-banner">
                 <div class="item header-text">
-                  <h6>Welcome to Onix Digital</h6>
-                  <h2>Build <em>your website</em> the best in <span>SEO</span>?</h2>
-                  <p>This is a professional looking HTML Bootstrap 5 website template brought to you by TemplateMo website.</p>
+                  <h6>Welcome to Reka Technology</h6>
+                  <h2>Solusi Digital untuk <em>Website & Aplikasi</em> yang <span>Tumbuh</span></h2>
+                  <p>Kami membantu bisnis Anda berkembang melalui website profesional, aplikasi mobile modern, dan strategi SEO yang terbukti.</p>
                   <div class="down-buttons">
                     <div class="main-blue-button-hover">
-                      <a href="#contact">Message Us Now</a>
+                      <a href="#contact">Konsultasi Gratis Sekarang</a>
                     </div>
                     <div class="call-button">
                       <a href="#"><i class="fa fa-phone"></i> 010-020-0340</a>
@@ -32,12 +208,12 @@ function convertToEmbed($url) {
                   </div>
                 </div>
                 <div class="item header-text">
-                  <h6>Online Marketing</h6>
-                  <h2>Get the <em>best ideas</em> for <span>your website</span></h2>
-                  <p>You are NOT allowed to redistribute this template ZIP file on any Free CSS collection websites. Contact us for more info. Thank you.</p>
+                  <h6>Social Media Management</h6>
+                  <h2>Konten <em>Menarik</em> yang Meningkatkan <span>Engagement</span></h2>
+                  <p>Kami mengelola konten media sosial Anda secara konsisten dan strategis untuk membangun brand, meningkatkan interaksi, dan mendatangkan pelanggan.</p>
                   <div class="down-buttons">
                     <div class="main-blue-button-hover">
-                      <a href="#services">Our Services</a>
+                      <a href="#services">Kelola Sosial Media Saya</a>
                     </div>
                     <div class="call-button">
                       <a href="#"><i class="fa fa-phone"></i> 090-080-0760</a>
@@ -45,12 +221,12 @@ function convertToEmbed($url) {
                   </div>
                 </div>
                 <div class="item header-text">
-                  <h6>Video Tutorials</h6>
-                  <h2>Watch <em>our videos</em> for your <span>projects</span></h2>
-                  <p>Please <a rel="nofollow" href="https://www.paypal.me/templatemo" target="_blank">support us</a> a little via PayPal if this digital marketing HTML template is useful for you. Thank you.</p>
+                  <h6>SEO Optimization</h6>
+                  <h2>Optimasi <em>SEO</em> untuk <span>Peringkat Teratas Google</span></h2>
+                  <p>Kami membantu website Anda lebih mudah ditemukan calon pelanggan melalui strategi SEO on-page, off-page, dan technical SEO yang tepat sasaran.</p>
                   <div class="down-buttons">
                     <div class="main-blue-button-hover">
-                      <a href="#video">Watch Videos</a>
+                      <a href="#contact">Konsultasi SEO Gratis</a>
                     </div>
                     <div class="call-button">
                       <a href="#"><i class="fa fa-phone"></i> 050-040-0320</a>
@@ -65,15 +241,16 @@ function convertToEmbed($url) {
     </div>
   </div>
   <!--================== END ==================-->
+  @endforeach
 
   <!--================== SERVICE ==================-->
   <div id="services" class="our-services section">
     <div class="services-right-dec">
-      <img src="{{ asset('onix/assets/images/services-right-dec.png') }}" alt="">
+      <img src="{{ asset('onix/assets/images/bg7.png') }}" alt="">
     </div>
     <div class="container">
       <div class="services-left-dec">
-        <img src="{{ asset('onix/assets/images/services-left-dec.png') }}" alt="">
+        <img src="{{ asset('onix/assets/images/bg6.png') }}" alt="">
       </div>
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
@@ -212,21 +389,11 @@ function convertToEmbed($url) {
   </div>
   <!--================== END ==================-->
 
-
   <!--================== HARGA ==================-->
   <div id="pricing" class="pricing-tables">
-    <div class="tables-left-dec">
-      {{-- <img src="{{ asset('onix/assets/images/tables-left-dec.png') }}" alt=""> --}}
-      <div class="shape-flower">
-          <span class="p1"></span>
-          <span class="p2"></span>
-          <span class="p3"></span>
-          <span class="p4"></span>
-      </div>
 
-    </div>
     <div class="tables-right-dec">
-      <img src="{{ asset('onix/assets/images/tables-right-dec.png') }}" alt="">
+      <img src="{{ asset('onix/assets/images/bg5.png') }}" alt="">
     </div>
     <div class="container">
       <div class="row">
@@ -238,54 +405,33 @@ function convertToEmbed($url) {
         </div>
       </div>
       <div class="row">
+        @foreach ($plans as $plan)
         <div class="col-lg-4">
-          <div class="item first-item">
-            <h4>Starter Plan</h4>
-            <em>$160/mo</em>
-            <span>$140</span>
-            <ul>
-              <li>10 Projects</li>
-              <li>100 GB space</li>
-              <li>20 SEO checkups</li>
-              <li>Basic Support</li>
+          <div class="item {{ $plan->best_price === 'yes' ? 'second-item best-price' : '' }}">
+
+            <div class="badge-hemat">Hemat {{ $plan->hemat_persentase }}%</div>
+            @if ($plan->best_price === 'yes')
+            <div class="badge-best">BEST PRICE</div>
+            @endif
+
+            <h4>{{ $plan->nama_paket }}</h4>
+            <em style="color: red;">{{ $plan->harga_awal }}</em>
+            <span>{{ $plan->harga_promo }}</span>
+            <ul class="pricing-features text-start">
+              @foreach (explode(',', $plan->deskripsi) as $fitur)
+              <li style="margin-bottom: 4px; list-style: none;">
+                <span class="cloud-icon"></span>
+                {{ trim($fitur) }}
+              </li>
+              @endforeach
             </ul>
             <div class="main-blue-button-hover">
               <a href="#">Get Started</a>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="item second-item">
-            <h4>Standard Plan</h4>
-            <em>$240/mo</em>
-            <span>$200</span>
-            <ul>
-              <li>20 Projects</li>
-              <li>200 GB space</li>
-              <li>50 SEO checkups</li>
-              <li>Pro Support</li>
-            </ul>
-            <div class="main-blue-button-hover">
-              <a href="#">Get it Now</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="item third-item">
-            <h4>Advanced Plan</h4>
-            <em>$360/mo</em>
-            <span>$280</span>
-            <ul>
-              <li>30 Projects</li>
-              <li>300 GB space</li>
-              <li>100 SEO checkups</li>
-              <li>Best Support</li>
-            </ul>
-            <div class="main-blue-button-hover">
-              <a href="#">Buy Now</a>
-            </div>
-          </div>
-        </div>
+        @endforeach
+
       </div>
     </div>
   </div>
@@ -294,13 +440,13 @@ function convertToEmbed($url) {
   <!--================== PORTOFOLIO ==================-->
   <div id="portfolio" class="our-portfolio section">
     <div class="portfolio-left-dec">
-      <img src="{{ asset('onix/assets/images/portfolio-left-dec.png') }}" alt="">
+      <img style="opacity: 0.50; " src="{{ asset('onix/assets/images/bg2.png') }}" alt="">
     </div>
     <div class="container">
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
           <div class="section-heading">
-            <h2>Our Recent <em>Projects</em> &amp; Case Studies <span>for Clients</span></h2>
+            <h2>Project Terbaru <em>& Unggulan</em> dari <span>Klien Kami</span></h2>
             <span>Our Portfolio</span>
           </div>
         </div>
@@ -310,162 +456,23 @@ function convertToEmbed($url) {
       <div class="row">
         <div class="col-lg-12">
           <div class="owl-carousel owl-portfolio">
+
+            @foreach ($portofolios as $item)
             <div class="item">
               <div class="thumb">
-                <img src="{{ asset('onix/assets/images/portfolio-01.jpg') }}" alt="">
+                <img src="{{ $item->gambar ? asset('storage/img/portofolio/' . $item->gambar) : asset('onix/assets/images/portfolio-01.jpg') }}" alt="{{ $item->nama_project }}">
                 <div class="hover-effect">
                   <div class="inner-content">
-                    <a rel="sponsored" href="https://templatemo.com/tm-564-plot-listing" target="_parent">
-                      <h4>First Project</h4>
+                    <a rel="sponsored" href="#" target="_parent">
+                      <h4>{{ $item->nama_project }}</h4>
                     </a>
-                    <span>Plot Listing</span>
+                    <span>{{ $item->kategori ?? '-' }}</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{{ asset('onix/assets/images/portfolio-02.jpg') }}" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#">
-                      <h4>Project Two</h4>
-                    </a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{{ asset('onix/assets/images/portfolio-03.jpg') }}" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a rel="sponsored" href="https://templatemo.com/tm-562-space-dynamic" target="_parent">
-                      <h4>Third Project</h4>
-                    </a>
-                    <span>Space Dynamic SEO</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{{ asset('onix/assets/images/portfolio-04.jpg') }}" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#">
-                      <h4>Project Four</h4>
-                    </a>
-                    <span>Website Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{{ asset('onix/assets/images/portfolio-01.jpg') }}" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#">
-                      <h4>Fifth Project</h4>
-                    </a>
-                    <span>Digital Assets</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{{ asset('onix/assets/images/portfolio-02.jpg') }}" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#">
-                      <h4>Sixth Project</h4>
-                    </a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{{ asset('onix/assets/images/portfolio-03.jpg') }}" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#">
-                      <h4>7th Project</h4>
-                    </a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{{ asset('onix/assets/images/portfolio-04.jpg') }}" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#">
-                      <h4>8th Project</h4>
-                    </a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{{ asset('onix/assets/images/portfolio-01.jpg') }}" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#">
-                      <h4>9th Project</h4>
-                    </a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{{ asset('onix/assets/images/portfolio-02.jpg') }}" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#">
-                      <h4>Project Ten</h4>
-                    </a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{{ asset('onix/assets/images/portfolio-03.jpg') }}" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#">
-                      <h4>Project Eleven</h4>
-                    </a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="thumb">
-                <img src="{{ asset('onix/assets/images/portfolio-04.jpg') }}" alt="">
-                <div class="hover-effect">
-                  <div class="inner-content">
-                    <a href="#">
-                      <h4>12th Project</h4>
-                    </a>
-                    <span>SEO &amp; Marketing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
+
           </div>
         </div>
       </div>
@@ -473,33 +480,13 @@ function convertToEmbed($url) {
   </div>
   <!--================== END ==================-->
 
-  <div id="subscribe" class="subscribe">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="inner-content">
-            <div class="row">
-              <div class="col-lg-10 offset-lg-1">
-                <h2>Know Your Website SEO Score by Email</h2>
-                <form id="subscribe" action="" method="get">
-                  <input type="text" name="website" id="website" placeholder="Your Website URL" required="">
-                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
-                  <button type="submit" id="form-submit" class="main-button ">Subscribe</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <!--================== PORTOFOLIO VIDEO ==================-->
   <div id="video" class="our-videos section">
     <div class="videos-left-dec">
-      <img src="{{ asset('onix/assets/images/videos-left-dec.png') }}" alt="">
+      <img src="{{ asset('onix/assets/images/bg4.png') }}" alt="">
     </div>
     <div class="videos-right-dec">
-      <img src="{{ asset('onix/assets/images/videos-right-dec.png') }}" alt="">
+      <img src="{{ asset('onix/assets/images/bg3.png') }}" alt="">
     </div>
     <div class="container">
       <div class="row">
@@ -514,21 +501,21 @@ function convertToEmbed($url) {
                       <div>
                         <div class="thumb">
                           @if (!empty($item->video_url))
-                              <div class="video-container">
-                                  <iframe src="https://www.youtube.com/embed/{{ \Illuminate\Support\Str::after($item->video_url, 'v=') }}"
-                                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                          allowfullscreen>
-                                  </iframe>
-                              </div>
+                          <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/{{ \Illuminate\Support\Str::after($item->video_url, 'v=') }}"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowfullscreen>
+                            </iframe>
+                          </div>
                           @elseif(!empty($item->video))
-                              <div class="video-container">
-                                  <video controls>
-                                      <source src="{{ asset('storage/videos/project/' . $item->video) }}" type="video/mp4">
-                                      Browser Anda tidak mendukung video.
-                                  </video>
-                              </div>
+                          <div class="video-container">
+                            <video controls>
+                              <source src="{{ asset('storage/videos/project/' . $item->video) }}" type="video/mp4">
+                              Browser Anda tidak mendukung video.
+                            </video>
+                          </div>
                           @else
-                              <p class="text-muted">Tidak ada video</p>
+                          <p class="text-muted">Tidak ada video</p>
                           @endif
                           <div class="overlay-effect">
                             <a href="#">
@@ -563,60 +550,6 @@ function convertToEmbed($url) {
       </div>
     </div>
   </div>
+  <!--================== END ==================-->
 
-  <div id="contact" class="contact-us section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-7">
-          <div class="section-heading">
-            <h2>Feel free to <em>Contact</em> us via the <span>HTML form</span></h2>
-            <div id="map">
-              <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="360px" frameborder="0" style="border:0" allowfullscreen=""></iframe>
-            </div>
-            <div class="info">
-              <span><i class="fa fa-phone"></i> <a href="#">010-020-0340<br>090-080-0760</a></span>
-              <span><i class="fa fa-envelope"></i> <a href="#">info@company.com<br>mail@company.com</a></span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-5 align-self-center">
-          <form id="contact" action="" method="get">
-            <div class="row">
-              <div class="col-lg-12">
-                <fieldset>
-                  <input type="name" name="name" id="name" placeholder="Name" autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <input type="surname" name="surname" id="surname" placeholder="Surname" autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <input type="text" name="website" id="website" placeholder="Your Website URL" required="">
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <button type="submit" id="form-submit" class="main-button">Submit Request</button>
-                </fieldset>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="contact-dec">
-      <img src="{{ asset('onix/assets/images/contact-dec.png') }}" alt="">
-    </div>
-    <div class="contact-left-dec">
-      <img src="{{ asset('onix/assets/images/contact-left-dec.png') }}" alt="">
-    </div>
-  </div>
 </main>
