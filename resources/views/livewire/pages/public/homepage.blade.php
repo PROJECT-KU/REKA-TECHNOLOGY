@@ -159,7 +159,7 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
       font-weight: 700;
       line-height: 1.2;
 
-      background: #ff6b35;
+      background: #498d32;
       color: #fff;
       border-radius: 30px;
       z-index: 5;
@@ -245,11 +245,11 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
   <!--================== SERVICE ==================-->
   <div id="services" class="our-services section">
     <div class="services-right-dec">
-      <img src="{{ asset('onix/assets/images/services-right-dec.png') }}" alt="">
+      <img src="{{ asset('onix/assets/images/bg7.png') }}" alt="">
     </div>
     <div class="container">
       <div class="services-left-dec">
-        <img src="{{ asset('onix/assets/images/services-left-dec.png') }}" alt="">
+        <img src="{{ asset('onix/assets/images/bg6.png') }}" alt="">
       </div>
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
@@ -392,7 +392,7 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
   <div id="pricing" class="pricing-tables">
 
     <div class="tables-right-dec">
-      <img src="{{ asset('onix/assets/images/tables-right-dec.png') }}" alt="">
+      <img src="{{ asset('onix/assets/images/bg5.png') }}" alt="">
     </div>
     <div class="container">
       <div class="row">
@@ -439,7 +439,7 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
   <!--================== PORTOFOLIO ==================-->
   <div id="portfolio" class="our-portfolio section">
     <div class="portfolio-left-dec">
-      <img src="{{ asset('onix/assets/images/portfolio-left-dec.png') }}" alt="">
+      <img style="opacity: 0.50; " src="{{ asset('onix/assets/images/bg2.png') }}" alt="">
     </div>
     <div class="container">
       <div class="row">
@@ -479,33 +479,13 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
   </div>
   <!--================== END ==================-->
 
-  <div id="subscribe" class="subscribe">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="inner-content">
-            <div class="row">
-              <div class="col-lg-10 offset-lg-1">
-                <h2>Know Your Website SEO Score by Email</h2>
-                <form id="subscribe" action="" method="get">
-                  <input type="text" name="website" id="website" placeholder="Your Website URL" required="">
-                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
-                  <button type="submit" id="form-submit" class="main-button ">Subscribe</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <!--================== PORTOFOLIO VIDEO ==================-->
   <div id="video" class="our-videos section">
     <div class="videos-left-dec">
-      <img src="{{ asset('onix/assets/images/videos-left-dec.png') }}" alt="">
+      <img src="{{ asset('onix/assets/images/bg4.png') }}" alt="">
     </div>
     <div class="videos-right-dec">
-      <img src="{{ asset('onix/assets/images/videos-right-dec.png') }}" alt="">
+      <img src="{{ asset('onix/assets/images/bg3.png') }}" alt="">
     </div>
     <div class="container">
       <div class="row">
@@ -569,60 +549,6 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
       </div>
     </div>
   </div>
+  <!--================== END ==================-->
 
-  <div id="contact" class="contact-us section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-7">
-          <div class="section-heading">
-            <h2>Feel free to <em>Contact</em> us via the <span>HTML form</span></h2>
-            <div id="map">
-              <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="360px" frameborder="0" style="border:0" allowfullscreen=""></iframe>
-            </div>
-            <div class="info">
-              <span><i class="fa fa-phone"></i> <a href="#">010-020-0340<br>090-080-0760</a></span>
-              <span><i class="fa fa-envelope"></i> <a href="#">info@company.com<br>mail@company.com</a></span>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-5 align-self-center">
-          <form id="contact" action="" method="get">
-            <div class="row">
-              <div class="col-lg-12">
-                <fieldset>
-                  <input type="name" name="name" id="name" placeholder="Name" autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <input type="surname" name="surname" id="surname" placeholder="Surname" autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <input type="text" name="website" id="website" placeholder="Your Website URL" required="">
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <button type="submit" id="form-submit" class="main-button">Submit Request</button>
-                </fieldset>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="contact-dec">
-      <img src="{{ asset('onix/assets/images/contact-dec.png') }}" alt="">
-    </div>
-    <div class="contact-left-dec">
-      <img src="{{ asset('onix/assets/images/contact-left-dec.png') }}" alt="">
-    </div>
-  </div>
 </main>
