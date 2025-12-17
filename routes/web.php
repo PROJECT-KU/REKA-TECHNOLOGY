@@ -5,6 +5,9 @@ use App\Livewire\Pages\Admin\Role;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Pages\Admin\Dashboard;
 use App\Livewire\Pages\Public\Homepage\Index;
+use App\Livewire\Pages\Public\Contact\ContactForm;
+use App\Livewire\Pages\Public\Service\Serviceform;
+use App\Livewire\Pages\Public\Portofolio\PortofolioView;
 
 // Data Banners
 use App\Livewire\Pages\Admin\Banners\BannersCreate;
@@ -27,6 +30,9 @@ use App\Livewire\Pages\Admin\Project\ProjectList;
 use App\Livewire\Pages\Admin\Project\ProjectEdit;
 
 Route::get('/', Index::class)->name('homepage');
+Route::get('/contact', ContactForm::class)->name('contact');
+Route::get('/services', Serviceform::class)->name('services');
+Route::get('/portofolio', PortofolioView::class)->name('portofolio');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
