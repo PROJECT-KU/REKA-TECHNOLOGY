@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Pages\Public\Homepage;
 
-use App\Models\Banners;
 use App\Models\Price;
 use App\Models\Project;
 use App\Models\Contact;
@@ -24,10 +23,50 @@ class Index extends Component
 
     public function render()
     {
+        // Ambil semua paket aktif yang ditampilkan di homepage
+        $plans = Price::where('status', 'active')
+            ->where('show_homepage', 'yes')
+            ->get();
+
+        // Pisahkan best price & lainnya
+        $bestPrice = $plans->where('best_price', 'yes')->first();
+        $others    = $plans->where('best_price', '!=', 'yes')->values();
+
+        // Susun agar best price di tengah
+        $orderedPlans = collect();
+
+        if ($others->count() > 0) {
+            $orderedPlans->push($others->get(0)); // kiri
+        }
+
+        if ($bestPrice) {
+            $orderedPlans->push($bestPrice); // tengah (BEST PRICE)
+        }
+
+        if ($others->count() > 1) {
+            $orderedPlans->push($others->get(1)); // kanan
+        }
+
         return view('livewire.pages.public.homepage', [
+            'plans'    => $orderedPlans,
             'project' => Project::where('status', 'active')->get(),
-            'banner' => Banners::where('status', 'active')->get(),
-            'harga' => Price::where('status', 'active')->latest()->take(3)->get()
+            'portofolios' => Portofolio::latest()->take(12)->get(),
         ]);
+    }
+
+    public function submitContact()
+    {
+        $this->validate();
+
+        Contact::create([
+            'nama'    => $this->nama,
+            'telp' => $this->telp,
+            'email'   => $this->email,
+            'pesan' => $this->pesan,
+        ]);
+
+        $this->reset();
+
+        $this->dispatch('contact-success');
     }
 }
