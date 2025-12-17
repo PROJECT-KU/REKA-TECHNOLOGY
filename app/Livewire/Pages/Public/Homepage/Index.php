@@ -6,6 +6,7 @@ use App\Models\Price;
 use App\Models\Project;
 use App\Models\Contact;
 use App\Models\Portofolio;
+use App\Models\Banners;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -50,6 +51,7 @@ class Index extends Component
         return view('livewire.pages.public.homepage', [
             'plans'    => $orderedPlans,
             'project' => Project::where('status', 'active')->get(),
+            'banner' => Banners::where('status', 'active')->get(),
             'portofolios' => Portofolio::latest()->take(12)->get(),
         ]);
     }
