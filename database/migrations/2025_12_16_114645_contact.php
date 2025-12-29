@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('telp')->nullable();
             $table->string('email')->nullable();
             $table->text('pesan')->nullable();
+            $table->string('ip_address')->nullable();
+            $table->string('browser')->nullable();
             $table->timestamps();
         });
     }

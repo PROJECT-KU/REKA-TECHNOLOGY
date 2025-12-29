@@ -68,7 +68,6 @@ PORTFOLIO CARD GRID
 <!--================== PORTOFOLIO ==================-->
 <div id="portfolio" class="our-portfolio section">
 
-
     <div class="container">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
@@ -90,7 +89,12 @@ PORTFOLIO CARD GRID
                         <div class="hover-effect">
                             <div class="inner-content">
                                 <h4>{{ $item->nama_project }}</h4>
-                                <span>{{ $item->kategori ?? '-' }}</span>
+                                <span>{{ $item->nama_customer ?? '-' }}</span>
+                                <div class="mt-3">
+                                    <a href="{{ route('portofolio.detail', $item->id) }}" class="btn btn-success">
+                                        Lihat Detail
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
