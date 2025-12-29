@@ -67,11 +67,13 @@
                                     Portofolio
                                 </a>
                             </li>
-                            <li class="scroll-to-section">
-                                <div class="main-red-button-hover"> <a href="{{ route('contact') }}"
-                                        class="{{ request()->routeIs('contact') ? 'active' : '' }}">
+                            <li class="scroll-to-section d-block d-lg-inline-block">
+                                <div class="main-red-button-hover ">
+                                    <a href="{{ route('contact') }}"
+                                        class="{{ request()->routeIs('contact') ? 'active' : '' }}" style="color: black;">
                                         Kontak Kami
-                                    </a></div>
+                                    </a>
+                                </div>
                             </li>
                         </ul>
                         <a class='menu-trigger'>

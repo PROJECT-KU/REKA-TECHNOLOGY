@@ -17,6 +17,9 @@ class Newsletter extends Model
 
     protected $fillable = [
         'id',
+        'nama',
         'email_newsletter',
+        'ip_address',
+        'browser',
     ];
 }

@@ -152,7 +152,7 @@ Layanan | Reka Technology
         font-weight: 700;
         line-height: 1.2;
 
-        background: #ff6b35;
+        background: #498d32;
         color: #fff;
         border-radius: 30px;
         z-index: 5;
@@ -183,7 +183,7 @@ Layanan | Reka Technology
 <div id="pricing" class="pricing-tables">
 
     <div class="tables-right-dec">
-        <img src="{{ asset('onix/assets/images/tables-right-dec.png') }}" alt="">
+        <img src="{{ asset('onix/assets/images/bg6.png') }}" alt="">
     </div>
 
     <div class="container">
