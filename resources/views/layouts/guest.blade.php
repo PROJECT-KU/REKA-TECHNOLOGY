@@ -100,7 +100,7 @@
                         <div class="logo">
                             <a href="#"><img src="{{ asset('onix/assets/images/logoreka.png') }}" alt="Reka Technology" style="width:189px; height:70px; object-fit:contain;"></a>
                         </div>
-                        <a href="#">help@rekatechnology.com</a>
+                        <a href="#">help@rekatechnology.id</a>
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>

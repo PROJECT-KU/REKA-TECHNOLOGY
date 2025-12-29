@@ -212,7 +212,7 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
                     <a href="#contact">Konsultasi Gratis Sekarang</a>
                   </div>
                   <div class="call-button">
-                    <a href="#"><i class="fa fa-phone"></i> 010-020-0340</a>
+                    <a href="#"><i class="fa fa-phone"></i> +62 895-4286-86796</a>
                   </div>
                 </div>
               </div>
@@ -225,7 +225,7 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
                     <a href="#services">Kelola Sosial Media Saya</a>
                   </div>
                   <div class="call-button">
-                    <a href="#"><i class="fa fa-phone"></i> 090-080-0760</a>
+                    <a href="#"><i class="fa fa-phone"></i> +62 895-4286-86796</a>
                   </div>
                 </div>
               </div>
@@ -238,7 +238,7 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
                     <a href="#contact">Konsultasi SEO Gratis</a>
                   </div>
                   <div class="call-button">
-                    <a href="#"><i class="fa fa-phone"></i> 050-040-0320</a>
+                    <a href="#"><i class="fa fa-phone"></i> +62 895-4286-86796</a>
                   </div>
                 </div>
               </div>
