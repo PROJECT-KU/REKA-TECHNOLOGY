@@ -1,25 +1,43 @@
 <?php
 
-namespace App\Models;
+namespace App\Livewire\Pages\Public\Contact;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Contact;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
 
-class Contact extends Model
+class ContactForm extends Component
 {
-    protected $table = 'contact';
-    use HasFactory, HasUuids;
+    #[Layout('layouts.guest')]
+    public $nama, $telp, $email, $pesan;
 
-    protected $fillable = [
-        'nama',
-        'telp',
-        'email',
-        'pesan',
+    protected $rules = [
+        'nama'  => 'required|string|max:255',
+        'telp'  => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'pesan' => 'required',
     ];
 
-    protected $casts = [
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime'
-    ];
+    public function render()
+    {
+        return view('livewire.pages.public.contact-form');
+    }
+
+    public function submitContact()
+    {
+        $this->validate();
+
+        Contact::create([
+            'nama'       => $this->nama,
+            'telp'       => $this->telp,
+            'email'      => $this->email,
+            'pesan'      => $this->pesan,
+            'ip_address' => request()->ip(),
+            'browser'    => request()->userAgent(),
+        ]);
+
+        $this->reset();
+
+        $this->dispatch('contact-success');
+    }
 }

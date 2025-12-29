@@ -184,6 +184,15 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
       position: relative;
       top: -10px;
     }
+
+    /* ===============================
+    BANNER BACKGROUND STYLE
+    ================================ */
+    .main-banner {
+      background-position: center 85% !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+    }
   </style>
   <!--================== END ==================-->
 
@@ -191,46 +200,45 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
   <div class="main-banner" id="top" style="--banner-bg: url('{{ asset('storage/img/banners/' . $item->gambar) }}');">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12">
-            <div class="col-lg-6 align-self-center">
-              <div class="owl-carousel owl-banner">
-                <div class="item header-text">
-                  <h6>Welcome to Reka Technology</h6>
-                  <h2>Solusi Digital untuk <em>Website & Aplikasi</em> yang <span>Tumbuh</span></h2>
-                  <p>Kami membantu bisnis Anda berkembang melalui website profesional, aplikasi mobile modern, dan strategi SEO yang terbukti.</p>
-                  <div class="down-buttons">
-                    <div class="main-blue-button-hover">
-                      <a href="#contact">Konsultasi Gratis Sekarang</a>
-                    </div>
-                    <div class="call-button">
-                      <a href="#"><i class="fa fa-phone"></i> 010-020-0340</a>
-                    </div>
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="owl-carousel owl-banner">
+              <div class="item header-text">
+                <h6>Welcome to Reka Technology</h6>
+                <h2>Solusi Digital untuk <em>Website & Aplikasi</em> yang <span>Tumbuh</span></h2>
+                <p>Kami membantu bisnis Anda berkembang melalui website profesional, aplikasi mobile modern, dan strategi SEO yang terbukti.</p>
+                <div class="down-buttons">
+                  <div class="main-blue-button-hover">
+                    <a href="#contact">Konsultasi Gratis Sekarang</a>
+                  </div>
+                  <div class="call-button">
+                    <a href="#"><i class="fa fa-phone"></i> 010-020-0340</a>
                   </div>
                 </div>
-                <div class="item header-text">
-                  <h6>Social Media Management</h6>
-                  <h2>Konten <em>Menarik</em> yang Meningkatkan <span>Engagement</span></h2>
-                  <p>Kami mengelola konten media sosial Anda secara konsisten dan strategis untuk membangun brand, meningkatkan interaksi, dan mendatangkan pelanggan.</p>
-                  <div class="down-buttons">
-                    <div class="main-blue-button-hover">
-                      <a href="#services">Kelola Sosial Media Saya</a>
-                    </div>
-                    <div class="call-button">
-                      <a href="#"><i class="fa fa-phone"></i> 090-080-0760</a>
-                    </div>
+              </div>
+              <div class="item header-text">
+                <h6>Social Media Management</h6>
+                <h2>Konten <em>Menarik</em> yang Meningkatkan <span>Engagement</span></h2>
+                <p>Kami mengelola konten media sosial Anda secara konsisten dan strategis untuk membangun brand, meningkatkan interaksi, dan mendatangkan pelanggan.</p>
+                <div class="down-buttons">
+                  <div class="main-blue-button-hover">
+                    <a href="#services">Kelola Sosial Media Saya</a>
+                  </div>
+                  <div class="call-button">
+                    <a href="#"><i class="fa fa-phone"></i> 090-080-0760</a>
                   </div>
                 </div>
-                <div class="item header-text">
-                  <h6>SEO Optimization</h6>
-                  <h2>Optimasi <em>SEO</em> untuk <span>Peringkat Teratas Google</span></h2>
-                  <p>Kami membantu website Anda lebih mudah ditemukan calon pelanggan melalui strategi SEO on-page, off-page, dan technical SEO yang tepat sasaran.</p>
-                  <div class="down-buttons">
-                    <div class="main-blue-button-hover">
-                      <a href="#contact">Konsultasi SEO Gratis</a>
-                    </div>
-                    <div class="call-button">
-                      <a href="#"><i class="fa fa-phone"></i> 050-040-0320</a>
-                    </div>
+              </div>
+              <div class="item header-text">
+                <h6>SEO Optimization</h6>
+                <h2>Optimasi <em>SEO</em> untuk <span>Peringkat Teratas Google</span></h2>
+                <p>Kami membantu website Anda lebih mudah ditemukan calon pelanggan melalui strategi SEO on-page, off-page, dan technical SEO yang tepat sasaran.</p>
+                <div class="down-buttons">
+                  <div class="main-blue-button-hover">
+                    <a href="#contact">Konsultasi SEO Gratis</a>
+                  </div>
+                  <div class="call-button">
+                    <a href="#"><i class="fa fa-phone"></i> 050-040-0320</a>
                   </div>
                 </div>
               </div>
@@ -263,66 +271,95 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
       <div class="row">
         <div class="col-lg-12">
           <div class="owl-carousel owl-services">
+
             <div class="item">
-              <h4>IT Consultant</h4>
-              <div class="icon"><img src="{{ asset('onix/assets/images/service-icon-01.png') }}" alt=""></div>
-              <p>Konsultasi TI profesional untuk strategi digital, arsitektur sistem, dan optimasi infrastruktur agar bisnis Anda lebih efisien dan aman</p>
+              <h4>Konsultan Teknologi Informasi Bisnis</h4>
+              <div class="icon" style="color:#498d32; font-size:48px;">
+                <i class="fa fa-laptop"></i>
+              </div>
+              <p>
+                Konsultasi IT yang profesional untuk strategi digital pada bisnis Anda agar lebih efisien dan efektif
+              </p>
             </div>
+
             <div class="item">
               <h4>Pengembangan Website & Aplikasi Mobile</h4>
-              <div class="icon"><img src="{{ asset('onix/assets/images/service-icon-02.png') }}" alt=""></div>
-              <p>Bangun website dan aplikasi mobile yang responsif, berkinerja tinggi, dan siap membantu pertumbuhan bisnis Anda</p>
+              <div class="icon" style="color:#498d32; font-size:48px;">
+                <i class="fa fa-code"></i>
+              </div>
+              <p>
+                Bangun website dan aplikasi mobile yang responsif, berkinerja tinggi,
+                dan siap membantu pertumbuhan bisnis Anda
+              </p>
             </div>
+
             <div class="item">
               <h4>Desain dan Pengembangan UI / UX</h4>
-              <div class="icon"><img src="{{ asset('onix/assets/images/service-icon-03.png') }}" alt=""></div>
-              <p>Desain UI/UX yang dirancang untuk menarik, mudah digunakan, dan mampu meningkatkan performa produk digital Anda</p>
+              <div class="icon" style="color:#498d32; font-size:48px;">
+                <i class="fa fa-paint-brush"></i>
+              </div>
+              <p>
+                Desain UI/UX yang dirancang untuk menarik, mudah digunakan,
+                dan mampu meningkatkan performa produk digital Anda
+              </p>
             </div>
+
+
             <div class="item">
               <h4>Optimasi SEO Berkualitas untuk Pertumbuhan Bisnis</h4>
-              <div class="icon"><img src="{{ asset('onix/assets/images/service-icon-04.png') }}" alt=""></div>
-              <p>Optimalkan visibilitas website Anda dan raih peringkat terbaik di mesin pencari dengan strategi SEO yang terbukti efektif</p>
+              <div class="icon" style="color:#498d32; font-size:48px;">
+                <i class="fa fa-line-chart"></i>
+              </div>
+              <p>
+                Optimalkan visibilitas website Anda dan raih peringkat terbaik
+                di mesin pencari dengan strategi SEO yang terbukti efektif
+              </p>
             </div>
+
             <div class="item">
               <h4>Optimasi Kecepatan Website Bisnis Anda</h4>
-              <div class="icon"><img src="{{ asset('onix/assets/images/service-icon-01.png') }}" alt=""></div>
-              <p>Percepat loading website Anda untuk pengalaman pengguna yang lebih baik dan performa maksimal</p>
+              <div class="icon" style="color:#498d32; font-size:48px;">
+                <i class="fa fa-tachometer"></i>
+              </div>
+              <p>
+                Percepat loading website Anda untuk pengalaman pengguna yang
+                lebih baik dan performa maksimal
+              </p>
             </div>
+
             <div class="item">
               <h4>Pengelolaan Konten Sosial Media</h4>
-              <div class="icon"><img src="{{ asset('onix/assets/images/service-icon-02.png') }}" alt=""></div>
-              <p>Bangun interaksi dan engagement melalui konten visual dan copywriting yang menarik perhatian</p>
+              <div class="icon" style="color:#498d32; font-size:48px;">
+                <i class="fa fa-share-alt"></i>
+              </div>
+              <p>
+                Bangun interaksi dan engagement melalui konten visual
+                dan copywriting yang menarik perhatian
+              </p>
             </div>
+
             <div class="item">
               <h4>Edit Video Kreatif & Berkualitas untuk Branding</h4>
-              <div class="icon"><img src="{{ asset('onix/assets/images/service-icon-03.png') }}" alt=""></div>
-              <p>Tingkatkan kualitas konten dengan editing yang halus, clean, dan profesional yang memukau dan siap dipublikasikan</p>
+              <div class="icon" style="color:#498d32; font-size:48px;">
+                <i class="fa fa-video-camera"></i>
+              </div>
+              <p>
+                Tingkatkan kualitas konten dengan editing yang halus, clean,
+                dan profesional yang memukau dan siap dipublikasikan
+              </p>
             </div>
+
             <div class="item">
               <h4>Perawatan & Monitoring Website Bisnis Anda</h4>
-              <div class="icon"><img src="{{ asset('onix/assets/images/service-icon-04.png') }}" alt=""></div>
-              <p>Perawatan penuh mulai dari update konten, keamanan, hingga peningkatan performa untuk website anda</p>
+              <div class="icon" style="color:#498d32; font-size:48px;">
+                <i class="fa fa-cogs"></i>
+              </div>
+              <p>
+                Perawatan penuh mulai dari update konten, keamanan,
+                hingga peningkatan performa untuk website Anda
+              </p>
             </div>
-            <!-- <div class="item">
-              <h4>Accessibility for mobile viewing</h4>
-              <div class="icon"><img src="{{ asset('onix/assets/images/service-icon-01.png') }}" alt=""></div>
-              <p>Get to know more about the topic in details</p>
-            </div>
-            <div class="item">
-              <h4>Content Ideas for your next project</h4>
-              <div class="icon"><img src="{{ asset('onix/assets/images/service-icon-02.png') }}" alt=""></div>
-              <p>Feel free to use this template for your business</p>
-            </div>
-            <div class="item">
-              <h4>UI &amp; UX Design &amp; Development</h4>
-              <div class="icon"><img src="{{ asset('onix/assets/images/service-icon-03.png') }}" alt=""></div>
-              <p>Get to know more about the topic in details</p>
-            </div>
-            <div class="item">
-              <h4>Discover the digital marketing trend</h4>
-              <div class="icon"><img src="{{ asset('onix/assets/images/service-icon-04.png') }}" alt=""></div>
-              <p>Get to know more about the topic in details</p>
-            </div> -->
+
           </div>
         </div>
       </div>
@@ -345,11 +382,12 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
             <p>Kami membantu bisnis berkembang melalui solusi digital modern, mulai dari pembuatan website, aplikasi mobile, optimasi SEO, hingga manajemen proyek yang terstruktur.
               Dengan tim profesional dan teknologi terbaru, kami menghadirkan layanan yang cepat, aman, dan hasil yang terbukti meningkatkan performa bisnis Anda.</p>
             <div class="row">
+
               <div class="col-lg-4">
                 <div class="fact-item">
                   <div class="count-area-content">
-                    <div class="icon">
-                      <img src="{{ asset('onix/assets/images/service-icon-01.png') }}" alt="">
+                    <div class="icon" style="color:#498d32; font-size:48px;">
+                      <i class="fa fa-line-chart"></i>
                     </div>
                     <div class="count-digit">320</div>
                     <div class="count-title">SEO Projects</div>
@@ -357,11 +395,12 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
                   </div>
                 </div>
               </div>
+
               <div class="col-lg-4">
                 <div class="fact-item">
                   <div class="count-area-content">
-                    <div class="icon">
-                      <img src="{{ asset('onix/assets/images/service-icon-02.png') }}" alt="">
+                    <div class="icon" style="color:#498d32; font-size:48px;">
+                      <i class="fa fa-globe"></i>
                     </div>
                     <div class="count-digit">640</div>
                     <div class="count-title">Websites</div>
@@ -369,11 +408,12 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
                   </div>
                 </div>
               </div>
+
               <div class="col-lg-4">
                 <div class="fact-item">
                   <div class="count-area-content">
-                    <div class="icon">
-                      <img src="{{ asset('onix/assets/images/service-icon-03.png') }}" alt="">
+                    <div class="icon" style="color:#498d32; font-size:48px;">
+                      <i class="fa fa-smile-o"></i>
                     </div>
                     <div class="count-digit">889</div>
                     <div class="count-title">Pelanggan yang Puas</div>
@@ -381,6 +421,7 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>

@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('newsletter', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('nama')->nullable();
             $table->string('email_newsletter')->nullable();
+             $table->string('ip_address')->nullable();
+              $table->string('browser')->nullable();
             $table->timestamps();
         });
     }
