@@ -14,8 +14,14 @@ Kontak | Reka Technology
                         <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="360px" frameborder="0" style="border:0" allowfullscreen=""></iframe>
                     </div>
                     <div class="info">
-                        <span><i class="fa fa-phone"></i> <a href="#">010-020-0340<br>090-080-0760</a></span>
-                        <span><i class="fa fa-envelope"></i> <a href="#">info@company.com<br>mail@company.com</a></span>
+                        <span class="d-inline-flex align-items-center gap-2">
+                            <i class="fa fa-phone"></i>
+                            <a href="tel:+62895428686796">+62 895-4286-86796</a>
+                        </span>
+                        <span style="display: inline-flex; align-items: center; gap: 6px;">
+                            <i class="fa fa-envelope"></i>
+                            <a href="mailto:help@rekatechnology.id">help@rekatechnology.id</a>
+                        </span>
                     </div>
                 </div>
             </div>
