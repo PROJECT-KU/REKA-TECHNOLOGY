@@ -460,7 +460,7 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
             <span>{{ $plan->harga_promo }}</span>
             <ul class="pricing-features text-start">
               @foreach (explode(',', $plan->deskripsi) as $fitur)
-              <li style="margin-bottom: 4px; list-style: none;">
+              <li>
                 <span class="cloud-icon"></span>
                 {{ trim($fitur) }}
               </li>
