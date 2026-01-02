@@ -176,6 +176,18 @@ Layanan | Reka Technology
         position: relative;
         top: -10px;
     }
+
+    /* ===============================
+    DESKRIPSI NOTE PRICING STYLE
+    ================================ */
+    .plan-note {
+        display: block !important;
+        text-align: left !important;
+        font-size: 15px !important;
+        font-weight: 400;
+        margin-bottom: 15px;
+        color: rgba(0, 0, 0, 0.7) !important;
+    }
 </style>
 <!--================== END ==================-->
 
@@ -232,9 +244,11 @@ Layanan | Reka Technology
                             @endforeach
                         </ul>
 
-                        <span style="font-size: 12px; font-weight: 400; opacity: 0.7;">
-                            {{ $plan->note }}
+                        @if (!empty($plan->note))
+                        <span class="plan-note">
+                            <strong>Cocok untuk :</strong> {{ $plan->note }}
                         </span>
+                        @endif
 
                         <div class="main-blue-button-hover">
                             <a href="#">Get Started</a>
