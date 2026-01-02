@@ -17,8 +17,10 @@ class Price extends Model
         'harga_promo',
         'hemat_persentase',
         'best_price',
+        'start_from',
         'show_homepage',
         'deskripsi',
+        'note',
         'status',
 
     ];

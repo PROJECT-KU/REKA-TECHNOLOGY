@@ -456,8 +456,19 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
             @endif
 
             <h4>{{ $plan->nama_paket }}</h4>
+
             <em style="color: red;">{{ $plan->harga_awal }}</em>
-            <span>{{ $plan->harga_promo }}</span>
+
+            <span style="position: relative;">
+              @if ($plan->start_from === 'yes')
+              <small style="font-size: 12px; font-weight: 400; opacity: 0.7; position: relative; top: -20px;">
+                Mulai
+              </small>
+              @endif
+
+              {{ $plan->harga_promo }}
+            </span>
+
             <ul class="pricing-features text-start">
               @foreach (explode(',', $plan->deskripsi) as $fitur)
               <li>
@@ -466,6 +477,13 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
               </li>
               @endforeach
             </ul>
+
+            @if (!is_null($plan->note))
+            <span style="display: block; text-align: left; font-size: 15px; font-weight: 400; opacity: 0.7; margin-bottom: 15px; color: rgba(0, 0, 0, 0.7);">
+              <strong>Cocok untuk :</strong> {{ $plan->note }}
+            </span>
+            @endif
+
             <div class="main-blue-button-hover">
               <a href="#">Get Started</a>
             </div>

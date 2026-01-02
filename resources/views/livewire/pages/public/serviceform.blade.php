@@ -210,8 +210,18 @@ Layanan | Reka Technology
                         @endif
 
                         <h4>{{ $plan->nama_paket }}</h4>
+
                         <em style="color: red;">{{ $plan->harga_awal }}</em>
-                        <span>{{ $plan->harga_promo }}</span>
+
+                        <span style="position: relative;">
+                            @if ($plan->start_from === 'yes')
+                            <small style="font-size: 12px; font-weight: 400; opacity: 0.7; position: relative; top: -20px;">
+                                Mulai
+                            </small>
+                            @endif
+
+                            {{ $plan->harga_promo }}
+                        </span>
 
                         <ul class="pricing-features text-start">
                             @foreach (explode(',', $plan->deskripsi) as $fitur)
@@ -221,6 +231,10 @@ Layanan | Reka Technology
                             </li>
                             @endforeach
                         </ul>
+
+                        <span style="font-size: 12px; font-weight: 400; opacity: 0.7;">
+                            {{ $plan->note }}
+                        </span>
 
                         <div class="main-blue-button-hover">
                             <a href="#">Get Started</a>
