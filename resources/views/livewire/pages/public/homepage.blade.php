@@ -9,8 +9,6 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
 @endphp
 
 <main class="main">
-
-  @foreach ($banner as $index => $item)
   <!--================== CSS UNTUK PRICE PAKET ==================-->
   <style>
     /* ===============================
@@ -195,6 +193,8 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
     }
   </style>
   <!--================== END ==================-->
+
+  @foreach ($banner as $index => $item)
 
   <!--================== BANNER ==================-->
   <div class="main-banner" id="top" style="--banner-bg: url('{{ asset('storage/img/banners/' . $item->gambar) }}');">
