@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('harga_promo')->nullable();
             $table->string('hemat_persentase')->nullable();
             $table->string('best_price')->nullable();
+            $table->enum('start_from', ['yes', 'no'])->nullable();
             $table->string('show_homepage')->nullable();
             $table->text('deskripsi')->nullable();
+            $table->text('note')->nullable();
             $table->enum('status', ['active', 'non-active'])->nullable();
             $table->timestamps();
         });

@@ -65,7 +65,7 @@
             </div>
 
             <!-- Best Price -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="best_price" class="form-label">Best Price <span class="text-danger">*</span></label>
                 <select id="best_price" wire:model.defer="best_price"
                     class="form-select @error('best_price') is-invalid @enderror">
@@ -79,7 +79,7 @@
             </div>
 
             <!-- Show Homepage -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="show_homepage" class="form-label">Show Homepage <span class="text-danger">*</span></label>
                 <select id="show_homepage" wire:model.defer="show_homepage"
                     class="form-select @error('show_homepage') is-invalid @enderror">
@@ -92,9 +92,23 @@
                 @enderror
             </div>
 
-            <!-- Deskripsi -->
+            <!-- Start From -->
+            <div class="col-md-4">
+                <label for="start_from" class="form-label">Start From <span class="text-danger">*</span></label>
+                <select id="start_from" wire:model.defer="start_from"
+                    class="form-select @error('start_from') is-invalid @enderror">
+                    <option value="">-- Pilih Start From --</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+                @error('start_from')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Fitur -->
             <div class="col-12">
-                <label for="deskripsi" class="form-label">Deskripsi</label>
+                <label for="deskripsi" class="form-label">Fitur</label>
                 <div class="border rounded p-2 @error('deskripsi') is-invalid @enderror" wire:ignore style="min-height: 100px;">
                     <div id="chip-container" class="d-flex flex-wrap gap-1 mb-2">
                         <!-- Chips will be added here dynamically -->
@@ -103,6 +117,17 @@
                 </div>
                 <input type="hidden" wire:model.defer="deskripsi" id="deskripsi-hidden">
                 @error('deskripsi')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <!-- Deskripsi -->
+            <div class="col-12">
+                <label for="note" class="form-label">Deskripsi</label>
+                <div class="border rounded p-2 @error('note') is-invalid @enderror" wire:ignore style="min-height: 100px;">
+                    <textarea type="text" id="note" class="form-control border-0 p-0" placeholder="Masukan Deskripsi" wire:model.defer="note" style="outline: none; box-shadow: none;"></textarea>
+                </div>
+                @error('note')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>

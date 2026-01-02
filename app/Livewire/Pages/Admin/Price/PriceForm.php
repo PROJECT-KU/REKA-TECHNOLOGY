@@ -17,8 +17,10 @@ class PriceForm extends Component
     public $harga_promo = '';
     public $hemat_persentase = '';
     public $best_price = '';
+    public $start_from = '';
     public $show_homepage = '';
     public $deskripsi = '';
+    public $note = '';
     public $status = '';
 
     public $mode = 'create';
@@ -31,8 +33,10 @@ class PriceForm extends Component
             $this->harga_promo              = $this->price->harga_promo;
             $this->hemat_persentase         = $this->price->hemat_persentase;
             $this->best_price               = $this->price->best_price;
+            $this->start_from               = $this->price->start_from;
             $this->show_homepage            = $this->price->show_homepage;
             $this->deskripsi                = $this->price->deskripsi;
+            $this->note                     = $this->price->note;
             $this->status                   = $this->price->status;
             $this->mode                     = 'edit';
         }
@@ -45,8 +49,10 @@ class PriceForm extends Component
             'harga_awal'            => 'required|min:1',
             'harga_promo'           => 'required|min:1',
             'best_price'            => 'required|in:yes,no',
+            'start_from'            => 'required|in:yes,no',
             'show_homepage'         => 'required|in:yes,no',
             'deskripsi'             => 'nullable|string',
+            'note'                  => 'nullable|string',
             'status'                => 'required|in:active,non-active',
         ];
 
@@ -69,8 +75,10 @@ class PriceForm extends Component
                 'harga_promo'           => $this->harga_promo, // ← sudah benar
                 'hemat_persentase'      => $this->hemat_persentase,
                 'best_price'            => $this->best_price,
+                'start_from'            => $this->start_from,
                 'show_homepage'         => $this->show_homepage,
                 'deskripsi'             => $this->deskripsi,
+                'note'                  => $this->note,
                 'status'                => $this->status,
             ]);
 
@@ -93,8 +101,10 @@ class PriceForm extends Component
                 'harga_promo'           => $this->harga_promo,
                 'hemat_persentase'      => $this->hemat_persentase,
                 'best_price'            => $this->best_price,
+                'start_from'            => $this->start_from,
                 'show_homepage'         => $this->show_homepage,
                 'deskripsi'             => $this->deskripsi,
+                'note'                  => $this->note,
                 'status'                => $this->status,
             ];
 
@@ -117,8 +127,10 @@ class PriceForm extends Component
         $this->harga_promo          = '';
         $this->hemat_persentase     = '';
         $this->best_price           = '';
+        $this->start_from           = '';
         $this->show_homepage        = '';
         $this->deskripsi            = '';
+        $this->note                 = '';
         $this->status               = '';
     }
 
