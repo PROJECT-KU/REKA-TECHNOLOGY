@@ -191,6 +191,18 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
       background-size: cover !important;
       background-repeat: no-repeat !important;
     }
+
+    /* ===============================
+    DESKRIPSI NOTE PRICING STYLE
+    ================================ */
+    .plan-note {
+      display: block !important;
+      text-align: left !important;
+      font-size: 15px !important;
+      font-weight: 400;
+      margin-bottom: 15px;
+      color: rgba(0, 0, 0, 0.7) !important;
+    }
   </style>
   <!--================== END ==================-->
 
@@ -478,8 +490,8 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
               @endforeach
             </ul>
 
-            @if (!is_null($plan->note))
-            <span style="display: block; text-align: left; font-size: 15px; font-weight: 400; opacity: 0.7; margin-bottom: 15px; color: rgba(0, 0, 0, 0.7);">
+            @if (!empty($plan->note))
+            <span class="plan-note">
               <strong>Cocok untuk :</strong> {{ $plan->note }}
             </span>
             @endif
