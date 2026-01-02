@@ -124,8 +124,8 @@
             <!-- Deskripsi -->
             <div class="col-12">
                 <label for="note" class="form-label">Deskripsi</label>
-                <div class="border rounded p-2 @error('note') is-invalid @enderror" wire:ignore style="min-height: 100px;">
-                    <textarea type="text" id="note" class="form-control border-0 p-0" placeholder="Masukan Deskripsi" wire:model.defer="note" style="outline: none; box-shadow: none;"></textarea>
+                <div class="border rounded p-2 @error('note') is-invalid @enderror" wire:ignore>
+                    <textarea type="text" id="note" class="form-control border-0 p-0" placeholder="Masukan Deskripsi" wire:model.defer="note" style="outline: none; box-shadow: none; height: 100px;"></textarea>
                 </div>
                 @error('note')
                 <div class="invalid-feedback">{{ $message }}</div>
