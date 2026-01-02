@@ -471,7 +471,7 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
 
             <em style="color: red;">{{ $plan->harga_awal }}</em>
 
-            <span style="position: relative;">
+            <span style="position: relative; font-size: 38px; white-space: nowrap;">
               @if ($plan->start_from === 'yes')
               <small style="font-size: 12px; font-weight: 400; opacity: 0.7; position: relative; top: -20px;">
                 Mulai
