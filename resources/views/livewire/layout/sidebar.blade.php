@@ -37,12 +37,39 @@ new class extends Component {
                     </a>
                 </li>
 
-                <li class="sidebar-item has-sub {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') || request()->routeIs('admin.project.*') ? 'active open' : ''}}">
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.categories-price.*') || request()->routeIs('admin.Paket.*') ? 'active open' : ''}}">
 
                     <a href="javascript:void(0)"
-                        class="sidebar-link {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') || request()->routeIs('admin.project.*') ? 'text-primary fw-bold' : '' }}">
-                        <i class="bi bi-globe-americas {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') || request()->routeIs('admin.project.*') ? 'text-primary' : '' }}"></i>
-                        <span class="{{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Paket.*') || request()->routeIs('admin.Portofolio.*') || request()->routeIs('admin.project.*') ? 'text-primary' : '' }}">
+                        class="sidebar-link {{ request()->routeIs('admin.categories-price.*') || request()->routeIs('admin.Paket.*') ? 'text-primary fw-bold' : '' }}">
+                        <i class="bi bi-globe-americas {{ request()->routeIs('admin.categories-price.*') || request()->routeIs('admin.Paket.*') ? 'text-primary' : '' }}"></i>
+                        <span class="{{ request()->routeIs('admin.categories-price.*') || request()->routeIs('admin.Paket.*') ? 'text-primary' : '' }}">
+                            Data Paket
+                        </span>
+                    </a>
+
+                    <ul class="submenu">
+
+                        <li class="submenu-item {{ request()->routeIs('admin.categories-price.*') ? 'active' : '' }}">
+                            <a wire:navigate href="{{ route('admin.categories-price.index') }}" class="submenu-link">
+                                Data Kategori Paket
+                            </a>
+                        </li>
+
+                        <li class="submenu-item {{ request()->routeIs('admin.Paket.*') ? 'active' : '' }}">
+                            <a wire:navigate href="{{ route('admin.Paket.index') }}" class="submenu-link">
+                                Data Paket
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="sidebar-item has-sub {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Portofolio.*') || request()->routeIs('admin.project.*') ? 'active open' : ''}}">
+
+                    <a href="javascript:void(0)"
+                        class="sidebar-link {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Portofolio.*') || request()->routeIs('admin.project.*') ? 'text-primary fw-bold' : '' }}">
+                        <i class="bi bi-globe-americas {{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Portofolio.*') || request()->routeIs('admin.project.*') ? 'text-primary' : '' }}"></i>
+                        <span class="{{ request()->routeIs('admin.Banners.*') || request()->routeIs('admin.Portofolio.*') || request()->routeIs('admin.project.*') ? 'text-primary' : '' }}">
                             Data Public
                         </span>
                     </a>
@@ -52,12 +79,6 @@ new class extends Component {
                         <li class="submenu-item {{ request()->routeIs('admin.Banners.*') ? 'active' : '' }}">
                             <a wire:navigate href="{{ route('admin.Banners.index') }}" class="submenu-link">
                                 Data Banner
-                            </a>
-                        </li>
-
-                        <li class="submenu-item {{ request()->routeIs('admin.Paket.*') ? 'active' : '' }}">
-                            <a wire:navigate href="{{ route('admin.Paket.index') }}" class="submenu-link">
-                                Data Paket
                             </a>
                         </li>
 

@@ -188,15 +188,40 @@ Layanan | Reka Technology
         margin-bottom: 15px;
         color: rgba(0, 0, 0, 0.7) !important;
     }
+
+    /* ===============================
+    TABS CATEGORY STYLE
+    ================================ */
+
+    .nav-tabs {
+        border-bottom: none;
+    }
+
+    .nav-tabs .nav-link {
+        color: #555;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+
+    .nav-tabs .nav-link:hover {
+        background-color: #f5f5f5;
+        color: #333;
+    }
+
+    .nav-tabs .nav-link.active {
+        color: #fff;
+        background-color: #4da6e7;
+        /* warna brand */
+        border-color: #4da6e7 #4da6e7 #fff;
+        box-shadow: 0 4px 10px rgba(77, 166, 231, 0.3);
+    }
 </style>
 <!--================== END ==================-->
 
 <!--================== HARGA ==================-->
 <div id="pricing" class="pricing-tables">
-
-    <div class="tables-right-dec">
-        <img src="{{ asset('onix/assets/images/bg6.png') }}" alt="">
-    </div>
 
     <div class="container">
         <div class="row">
@@ -208,13 +233,91 @@ Layanan | Reka Technology
             </div>
         </div>
 
+        <div class="d-flex align-items-center justify-content-between" style="border-bottom: 2px solid #eee; padding-bottom: 10px; flex-wrap: wrap;">
+
+            <!-- SEARCH BOX DI KIRI -->
+            <form method="GET" action="{{ route('services') }}" class="w-25 mb-3">
+
+                <!-- PERTAHANKAN KATEGORI AKTIF -->
+                <input type="hidden" name="selectedCategory" value="{{ $selectedCategory }}">
+
+                <div class="position-relative">
+
+                    <!-- INPUT -->
+                    <input type="text"
+                        name="searchPrice"
+                        value="{{ request('searchPrice') }}"
+                        class="form-control ps-5 pe-5"
+                        placeholder="Ketik Nama Paket..."
+                        style="height: 42px; border-radius: 30px; font-size: 14px; border: 1px solid #e5e7eb; box-shadow: none; transition: all 0.25s ease;" onfocus="this.style.borderColor='#4da6e7'" onblur="this.style.borderColor='#e5e7eb'">
+
+                    <!-- ICON SEARCH -->
+                    <span style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #9ca3af; font-size: 14px;">
+                        <i class="bi bi-search"></i>
+                    </span>
+
+                    <!-- =========================
+                        KONDISI TOMBOL 
+                    ========================= -->
+
+                    @if(request('searchPrice'))
+                    <!-- BUTTON RESET (X - DANGER) -->
+                    <a href="{{ route('services', ['selectedCategory' => $selectedCategory]) }}"
+                        title="Reset pencarian"
+                        style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; background: #fee2e2; color: #ef4444; display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; transition: all 0.2s ease;" onmouseover="this.style.background='#fecaca'" onmouseout="this.style.background='#fee2e2'">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                    @else
+                    <!-- BUTTON CARI (DEFAULT) -->
+                    <button type="submit"
+                        style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); border: none; background: linear-gradient(135deg, #4da6e7, #3b82f6); color: #fff; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.25s ease;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+                        Cari
+                    </button>
+                    @endif
+
+                </div>
+            </form>
+
+            <!-- TAB CATEGORIES DI KANAN -->
+            <ul class="nav nav-tabs mb-0"
+                style="flex-grow:1; justify-content:flex-end; overflow-x:auto; white-space:nowrap;">
+
+                @foreach($categories as $category)
+                <li class="nav-item me-2">
+                    <a href="{{ route('services', [
+                'selectedCategory' => $category->slug,
+                'searchPrice' => request('searchPrice')
+            ]) }}"
+                        class="nav-link {{ request('selectedCategory') == $category->slug ? 'active' : '' }}"
+                        style="padding:10px 20px; border-radius:50px; transition:0.3s;">
+                        {{ $category->categories }}
+                    </a>
+                </li>
+                @endforeach
+
+                <li class="nav-item">
+                    <a href="{{ route('services', ['searchPrice' => request('searchPrice')]) }}"
+                        class="nav-link {{ request('selectedCategory') === null ? 'active' : '' }}"
+                        style="padding:10px 20px; border-radius:50px; transition:0.3s;">
+                        Semua Paket
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+
         <div class="container">
+            @if($rows->isEmpty())
+            <div class="alert alert-warning text-center">
+                Belum ada paket untuk kategori ini.
+            </div>
+            @else
             @foreach ($rows as $row)
-            <div class="row mb-4">
+            <div class="row mb-4 mt-5">
                 @foreach ($row as $plan)
                 <div class="col-lg-4 mb-5">
                     <div class="item {{ $plan->best_price === 'yes' ? 'best-price' : '' }}">
-
                         <div class="badge-hemat">Hemat {{ $plan->hemat_persentase }}%</div>
 
                         @if ($plan->best_price === 'yes')
@@ -231,7 +334,6 @@ Layanan | Reka Technology
                                 Mulai
                             </small>
                             @endif
-
                             {{ $plan->harga_promo }}
                         </span>
 
@@ -253,12 +355,12 @@ Layanan | Reka Technology
                         <div class="main-blue-button-hover">
                             <a href="#">Get Started</a>
                         </div>
-
                     </div>
                 </div>
                 @endforeach
             </div>
             @endforeach
+            @endif
         </div>
 
 
