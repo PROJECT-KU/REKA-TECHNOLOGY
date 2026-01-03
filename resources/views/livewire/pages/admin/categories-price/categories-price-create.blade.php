@@ -13,7 +13,7 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <livewire:pages.admin.CategoriesPrice.CategoriesPriceform />
+            <livewire:pages.admin.CategoriesPrice.CategoriesPriceForm />
         </div>
     </div>
 </div>
