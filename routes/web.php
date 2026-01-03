@@ -20,6 +20,11 @@ use App\Livewire\Pages\Admin\Price\PriceList;
 use App\Livewire\Pages\Admin\Price\PriceCreate;
 use App\Livewire\Pages\Admin\Price\PriceEdit;
 
+// Data Kategori Paket
+use App\Livewire\Pages\Admin\CategoriesPrice\CategoriesPriceList;
+use App\Livewire\Pages\Admin\CategoriesPrice\CategoriesPriceCreate;
+use App\Livewire\Pages\Admin\CategoriesPrice\CategoriesPriceEdit;
+
 // Data Portofolio
 use App\Livewire\Pages\Admin\Portofolio\PortofolioList;
 use App\Livewire\Pages\Admin\Portofolio\PortofolioCreate;
@@ -59,6 +64,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/admin/DataPaket', PriceList::class)->name('admin.Paket.index');
     Route::get('/admin/DataPaket/create', PriceCreate::class)->name('admin.Paket.create');
     Route::get('/admin/DataPaket/{Price}/edit', PriceEdit::class)->name('admin.Paket.edit');
+
+    // Data Kategori Paket
+    Route::get('/admin/DataKategoriPaket', CategoriesPriceList::class)->name('admin.categories-price.index');
+    Route::get('/admin/DataKategoriPaket/create', CategoriesPriceCreate::class)->name('admin.categories-price.create');
+    Route::get('/admin/DataKategoriPaket/{CategoriesPrice}/edit', CategoriesPriceEdit::class)->name('admin.categories-price.edit');
 
     // Data Portofolio
     Route::get('/admin/DataPortofolio', PortofolioList::class)->name('admin.Portofolio.index');

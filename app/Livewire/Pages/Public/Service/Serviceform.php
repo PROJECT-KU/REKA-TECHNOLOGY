@@ -3,53 +3,108 @@
 namespace App\Livewire\Pages\Public\Service;
 
 use App\Models\Price;
+use App\Models\CategoriesPrice;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class Serviceform extends Component
 {
     #[Layout('layouts.guest')]
+
+    public $selectedCategory = null; // SLUG kategori aktif
+    public $categories = [];
+    public $searchPrice = '';
+
+    protected $queryString = [
+        'selectedCategory' => ['except' => ''],
+        'searchPrice' => ['except' => ''],
+    ];
+
+    public function mount()
+    {
+        $this->categories = CategoriesPrice::orderBy('categories')->get();
+
+        $this->selectedCategory = request('selectedCategory');
+        $this->searchPrice = request('searchPrice');
+
+        // VALIDASI SLUG
+        if ($this->selectedCategory) {
+            $exists = CategoriesPrice::where('slug', $this->selectedCategory)->exists();
+            if (!$exists) {
+                $this->selectedCategory = null;
+            }
+        }
+    }
+
     public function render()
     {
-        // Livewire Serviceform.php
-        $prices = Price::where('status', 'active')->get();
+        $query = Price::where('status', 'active');
+
+        /* =========================
+           FILTER KATEGORI (SLUG)
+        ========================= */
+        if ($this->selectedCategory) {
+            $categoryId = CategoriesPrice::where('slug', $this->selectedCategory)->value('id');
+
+            if ($categoryId) {
+                $query->where('categories_price_id', $categoryId);
+            }
+        }
+
+        /* =========================
+           FILTER SEARCH
+        ========================= */
+        if (!empty($this->searchPrice)) {
+
+            $searchNumber = preg_replace('/[^0-9]/', '', $this->searchPrice);
+            $searchText = $this->searchPrice;
+
+            $query->where(function ($q) use ($searchNumber, $searchText) {
+
+                // TEXT
+                $q->where('nama_paket', 'like', "%{$searchText}%")
+                    ->orWhere('deskripsi', 'like', "%{$searchText}%")
+                    ->orWhere('note', 'like', "%{$searchText}%");
+
+                // HARGA RUPIAH
+                if ($searchNumber !== '') {
+                    $q->orWhereRaw(
+                        "REPLACE(REPLACE(REPLACE(harga_awal, 'Rp', ''), '.', ''), ' ', '') LIKE ?",
+                        ["%{$searchNumber}%"]
+                    )
+                        ->orWhereRaw(
+                            "REPLACE(REPLACE(REPLACE(harga_promo, 'Rp', ''), '.', ''), ' ', '') LIKE ?",
+                            ["%{$searchNumber}%"]
+                        );
+                }
+            });
+        }
+
+        $prices = $query->get();
+
+        /* =========================
+           BEST PRICE LAYOUT
+        ========================= */
         $bestPrices = $prices->where('best_price', 'yes')->values();
         $others = $prices->where('best_price', '!=', 'yes')->values();
 
         $rows = collect();
-        $othersIndex = 0;
-        $bestIndex = 0;
+        $o = 0;
+        $b = 0;
 
-        // loop untuk membuat baris 3 kolom
-        while ($othersIndex < $others->count() || $bestIndex < $bestPrices->count()) {
+        while ($o < $others->count() || $b < $bestPrices->count()) {
             $row = [];
 
-            // Ambil 1 paket kiri jika ada
-            if (isset($others[$othersIndex])) {
-                $row[] = $others[$othersIndex];
-                $othersIndex++;
-            }
+            if (isset($others[$o])) $row[] = $others[$o++];
+            if (isset($bestPrices[$b])) $row[] = $bestPrices[$b++];
+            if (isset($others[$o])) $row[] = $others[$o++];
 
-            // Ambil 1 paket best_price tengah jika ada
-            if (isset($bestPrices[$bestIndex])) {
-                $row[] = $bestPrices[$bestIndex];
-                $bestIndex++;
-            }
-
-            // Ambil 1 paket kanan jika ada
-            if (isset($others[$othersIndex])) {
-                $row[] = $others[$othersIndex];
-                $othersIndex++;
-            }
-
-            // Jika row masih kosong (misal tersisa 1 best_price), tetap push
-            if (!empty($row)) {
-                $rows->push($row);
-            }
+            if ($row) $rows->push($row);
         }
 
         return view('livewire.pages.public.serviceform', [
             'rows' => $rows,
+            'categories' => $this->categories,
         ]);
     }
 }
