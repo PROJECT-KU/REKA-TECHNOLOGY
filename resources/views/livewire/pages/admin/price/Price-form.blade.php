@@ -2,7 +2,7 @@
     <form wire:submit.prevent="save" class="p-3">
         <div class="row g-3">
             <!-- Nama Paket -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="nama_paket" class="form-label">Nama Paket <span class="text-danger">*</span></label>
                 <input type="text" id="nama_paket" wire:model.defer="nama_paket"
                     class="form-control @error('nama_paket') is-invalid @enderror"
@@ -12,8 +12,31 @@
                 @enderror
             </div>
 
+            <!-- Kategori -->
+            <div class="col-md-4">
+                <label class="form-label">
+                    Kategori <span class="text-danger">*</span>
+                </label>
+
+                <select wire:model.defer="categories_price_id"
+                    class="form-select @error('categories_price_id') is-invalid @enderror">
+
+                    <option value="">-- Pilih Kategori --</option>
+
+                    @foreach ($categoriesPrices as $category)
+                    <option value="{{ $category->id }}">
+                        {{ $category->categories }}
+                    </option>
+                    @endforeach
+                </select>
+
+                @error('categories_price_id')
+                <div class="invalid-feedback d-block">{{ $message }}</div>
+                @enderror
+            </div>
+
             <!-- Status -->
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <label for="status" class="form-label">Status <span class="text-danger">*</span></label>
                 <select id="status" wire:model.defer="status"
                     class="form-select @error('status') is-invalid @enderror">

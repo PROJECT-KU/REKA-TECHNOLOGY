@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('price', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('categories_price_id')->nullable();
             $table->string('nama_paket')->nullable();
             $table->string('harga_awal')->nullable();
             $table->string('harga_promo')->nullable();
@@ -24,6 +25,12 @@ return new class extends Migration
             $table->text('note')->nullable();
             $table->enum('status', ['active', 'non-active'])->nullable();
             $table->timestamps();
+
+            $table->foreign('categories_price_id')
+                ->references('id')
+                ->on('categories_price')
+                ->onDelete('RESTRICT')
+                ->onUpdate('CASCADE');
         });
     }
 

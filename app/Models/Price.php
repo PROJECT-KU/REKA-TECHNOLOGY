@@ -12,6 +12,7 @@ class Price extends Model
     protected $table = 'price';
 
     protected $fillable = [
+        'categories_price_id',
         'nama_paket',
         'harga_awal',
         'harga_promo',
