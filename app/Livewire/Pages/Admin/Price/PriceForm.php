@@ -143,7 +143,7 @@ class PriceForm extends Component
 
     public function render()
     {
-        return view('livewire.pages.admin.price.price-form', [
+        return view('livewire.pages.admin.price.Price-form', [
             'categoriesPrices' => CategoriesPrice::orderBy('categories')->get()
         ]);
     }
