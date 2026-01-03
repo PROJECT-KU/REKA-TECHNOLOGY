@@ -13,7 +13,6 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('onix/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -24,103 +23,6 @@
     <link rel="stylesheet" href="{{ asset('onix/assets/css/animated.css') }}">
     <link rel="stylesheet" href="{{ asset('onix/assets/css/owl.css') }}">
     <link rel="stylesheet" href="{{ asset('onix/assets/css/custom.css') }}">
-
-    <!-- CSS DROP DOWN ITEM SERVICES -->
-    <style>
-        /* =====================================================
-            DROPDOWN SERVICES — CLEAN & FINAL
-        ===================================================== */
-
-        /* =======================
-            BASE ITEM STYLE
-        ======================= */
-        li.scroll-to-section.dropdown ul.dropdown-menu a.dropdown-item {
-            display: block !important;
-            width: 100% !important;
-            padding: 8px 20px !important;
-            box-sizing: border-box !important;
-            text-align: left !important;
-            color: #000 !important;
-            background-color: transparent !important;
-            font-family: inherit !important;
-            font-weight: 400 !important;
-            text-transform: none !important;
-        }
-
-        /* =======================
-            HOVER / FOCUS / ACTIVE
-        ======================= */
-        li.scroll-to-section.dropdown ul.dropdown-menu a.dropdown-item:hover,
-        li.scroll-to-section.dropdown ul.dropdown-menu a.dropdown-item:focus,
-        li.scroll-to-section.dropdown ul.dropdown-menu a.dropdown-item:active,
-        li.scroll-to-section.dropdown ul.dropdown-menu a.dropdown-item.active {
-            color: #4da6e7 !important;
-            background-color: rgba(77, 166, 231, 0.12) !important;
-        }
-
-        /* =======================
-            DROPDOWN STRUCTURE
-        ======================== */
-        li.scroll-to-section.dropdown>ul.dropdown-menu {
-            text-align: left !important;
-        }
-
-        li.scroll-to-section.dropdown>ul.dropdown-menu>li {
-            width: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-
-        li.scroll-to-section.dropdown>ul.dropdown-menu>li:last-child,
-        li.scroll-to-section.dropdown>ul.dropdown-menu>li:last-child>a {
-            text-align: left !important;
-        }
-
-        /* =======================
-            BOOTSTRAP VISIBILITY FIX
-        ======================= */
-        li.scroll-to-section.dropdown:not(.show)>ul.dropdown-menu {
-            display: none !important;
-        }
-
-        li.scroll-to-section.dropdown.show>ul.dropdown-menu,
-        li.scroll-to-section.dropdown>ul.dropdown-menu.show {
-            display: block !important;
-        }
-
-        /* =======================
-            MOBILE FIX — DROPDOWN PANJANG & SCROLL
-        ======================== */
-        @media (max-width: 767.98px) {
-
-            /* Dropdown mengalir normal & scroll jika panjang */
-            li.scroll-to-section.dropdown>ul.dropdown-menu {
-                position: static !important;
-                float: none !important;
-                width: 100% !important;
-                max-height: 60vh !important;
-                overflow-y: auto !important;
-                overflow-x: hidden !important;
-                transform: none !important;
-                -webkit-overflow-scrolling: touch !important;
-            }
-
-            /* Navbar collapse bisa scroll jika tinggi */
-            .navbar-collapse.show {
-                max-height: 80vh !important;
-                overflow-y: auto !important;
-                overflow-x: hidden !important;
-            }
-
-            /* Pastikan nav parent tidak memotong dropdown */
-            .navbar-nav {
-                height: auto !important;
-                overflow: visible !important;
-            }
-        }
-    </style>
-    <!-- END -->
-
 
 </head>
 
@@ -150,34 +52,15 @@
                                 style="width:189px; height:70px; object-fit:contain;">
                         </a>
                         <!-- ***** Logo End ***** -->
-
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="/" class="{{request()->routeIs('homepage') ? 'active' : ''}}">Beranda</a></li>
-                            <li class="scroll-to-section dropdown">
-                                <a href="#"
-                                    class="dropdown-toggle {{ request()->routeIs('services*') ? 'active' : '' }}"
-                                    data-bs-toggle="dropdown">
+                            <li class="scroll-to-section">
+                                <a href="{{ route('services') }}"
+                                    class="{{ request()->routeIs('services') ? 'active' : '' }}">
                                     Layanan Kami
                                 </a>
-
-                                <ul class="dropdown-menu">
-                                    @foreach ($categoriesPricesMenu as $category)
-                                    <li>
-                                        <a class="dropdown-item"
-                                            href="{{ route('services', ['selectedCategory' => $category->id]) }}">
-                                            {{ $category->categories }}
-                                        </a>
-                                    </li>
-                                    @endforeach
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('services') }}">
-                                            Semua Paket
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
-
                             <li class="scroll-to-section">
                                 <a href="{{ route('portofolio') }}"
                                     class="{{ request()->routeIs('portofolio') ? 'active' : '' }}">
@@ -185,12 +68,12 @@
                                 </a>
                             </li>
                             <li class="scroll-to-section d-block d-lg-inline-block">
-                                <!-- <div class="main-red-button-hover ">
+                                <div class="main-red-button-hover ">
                                     <a href="{{ route('contact') }}"
                                         class="{{ request()->routeIs('contact') ? 'active' : '' }}" style="color: black;">
                                         Kontak Kami
                                     </a>
-                                </div> -->
+                                </div>
                             </li>
                         </ul>
                         <a class='menu-trigger'>
