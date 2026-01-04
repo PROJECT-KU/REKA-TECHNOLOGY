@@ -446,6 +446,19 @@ header
     font-weight: 400;
 }
 
+/* ===============================
+    MOBILE ONLY — FIX KONTAK KAMI
+   =============================== */
+    @media (max-width: 991px) {
+    .header-area .main-nav .nav li:last-child a,
+    .background-header .main-nav .nav li:last-child a {
+    color: #ffffff !important;
+    padding: 0px 20px;
+    font-weight: 400;
+     background-color: #0e7490 !important;
+    }
+}
+
 .header-area .main-nav .nav li:last-child a:hover,
 .header-area .main-nav .nav li:last-child a.active {
     color: #fff !important;
