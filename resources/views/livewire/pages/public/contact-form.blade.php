@@ -11,7 +11,7 @@ Kontak | Reka Technology
                 <div class="section-heading">
                     <h2>Jangan Ragu untuk <em>Menghubungi</em> Kami Melalui <span>Formulir Kontak</span></h2>
                     <div id="map">
-                        <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="360px" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5471.715691506612!2d110.36458027628882!3d-7.766000277030293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59c7566ff703%3A0x88b95517b9a941b8!2shomebase%20ACM!5e1!3m2!1sid!2sid!4v1767489718304!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" width="100%" height="360px" frameborder="0" style="border:0" allowfullscreen=""></iframe>
                     </div>
                     <div class="info">
                         <span class="d-inline-flex align-items-center gap-2">

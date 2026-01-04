@@ -217,6 +217,26 @@ Layanan | Reka Technology
         border-color: #4da6e7 #4da6e7 #fff;
         box-shadow: 0 4px 10px rgba(77, 166, 231, 0.3);
     }
+
+    /* ===============================
+    LEBAR INPUTAN SEARCH STYLE
+    ================================ */
+    .w-md-50,
+    .w-lg-25 {
+        width: 100%;
+    }
+
+    @media (min-width: 768px) {
+        .w-md-50 {
+            width: 50% !important;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .w-lg-25 {
+            width: 25% !important;
+        }
+    }
 </style>
 <!--================== END ==================-->
 
@@ -236,11 +256,8 @@ Layanan | Reka Technology
         <div class="d-flex align-items-center justify-content-between" style="border-bottom: 2px solid #eee; padding-bottom: 10px; flex-wrap: wrap;">
 
             <!-- SEARCH BOX DI KIRI -->
-            <form method="GET" action="{{ route('services') }}" class="w-25 mb-3">
-
-                <!-- PERTAHANKAN KATEGORI AKTIF -->
+            <form method="GET" action="{{ route('services') }}" class="w-100 w-md-50 w-lg-25 mb-3">
                 <input type="hidden" name="selectedCategory" value="{{ $selectedCategory }}">
-
                 <div class="position-relative">
 
                     <!-- INPUT -->
@@ -255,10 +272,6 @@ Layanan | Reka Technology
                     <span style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #9ca3af; font-size: 14px;">
                         <i class="bi bi-search"></i>
                     </span>
-
-                    <!-- =========================
-                        KONDISI TOMBOL 
-                    ========================= -->
 
                     @if(request('searchPrice'))
                     <!-- BUTTON RESET (X - DANGER) -->
