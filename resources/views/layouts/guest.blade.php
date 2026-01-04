@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="{{ asset('onix/assets/css/animated.css') }}">
     <link rel="stylesheet" href="{{ asset('onix/assets/css/owl.css') }}">
     <link rel="stylesheet" href="{{ asset('onix/assets/css/custom.css') }}">
-
 </head>
 
 <body class="index-page">
@@ -49,7 +48,7 @@
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo">
                             <img src="{{ asset('onix/assets/images/logoreka.png') }}"
-                                style="width:189px; height:70px; object-fit:contain;">
+                                style="width:150px; height:50px; object-fit:contain;">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -68,7 +67,7 @@
                                 </a>
                             </li>
                             <li class="scroll-to-section d-block d-lg-inline-block">
-                                <div class="main-red-button-hover ">
+                                <div class="main-red-button-hover">
                                     <a href="{{ route('contact') }}"
                                         class="{{ request()->routeIs('contact') ? 'active' : '' }}" style="color: black;">
                                         Kontak Kami
@@ -105,7 +104,7 @@
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://www.instagram.com/rekatechno/"><i class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
