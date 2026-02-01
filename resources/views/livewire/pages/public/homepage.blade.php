@@ -531,7 +531,7 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
             @foreach ($portofolios as $item)
             <div class="item">
               <div class="thumb">
-                <img src="{{ $item->gambar ? asset('storage/app/public/img/portofolio/' . $item->gambar) : asset('onix/assets/images/portfolio-01.jpg') }}" alt="{{ $item->nama_project }}">
+                <img src="{{ $item->gambar ? asset('storage/img/portofolio/' . $item->gambar) : asset('onix/assets/images/portfolio-01.jpg') }}" alt="{{ $item->nama_project }}">
                 <div class="hover-effect">
                   <div class="inner-content">
                     <a rel="sponsored" href="#" target="_parent">
