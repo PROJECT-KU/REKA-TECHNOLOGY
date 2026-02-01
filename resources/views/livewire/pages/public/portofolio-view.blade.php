@@ -84,7 +84,7 @@ PORTFOLIO CARD GRID
                 <div class="portfolio-card">
                     <div class="thumb">
                         <img
-                            src="{{ $item->gambar ? asset('storage/img/portofolio/' . $item->gambar) : asset('onix/assets/images/portfolio-01.jpg') }}"
+                            src="{{ $item->gambar ? asset('storage/app/public/img/portofolio/' . $item->gambar) : asset('onix/assets/images/portfolio-01.jpg') }}"
                             alt="{{ $item->nama_project }}">
                         <div class="hover-effect">
                             <div class="inner-content">
