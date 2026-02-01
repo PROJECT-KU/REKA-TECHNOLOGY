@@ -129,7 +129,7 @@ Portofolio | Reka Technology
             <div class="col-12">
                 <div class="blog-card">
                     <div class="blog-thumb">
-                        <img src="{{ $portofolio->gambar ? asset('storage/img/portofolio/' . $portofolio->gambar) : asset('onix/assets/images/portfolio-01.jpg') }}" alt="{{ $portofolio->nama_project }}">
+                        <img src="{{ $portofolio->gambar ? asset('storage/app/public/img/portofolio/' . $portofolio->gambar) : asset('onix/assets/images/portfolio-01.jpg') }}" alt="{{ $portofolio->nama_project }}">
                     </div>
                     <div class="blog-content">
                         <h4>{{ $portofolio->nama_project }}</h4>
