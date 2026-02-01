@@ -221,10 +221,10 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
                 <p>Kami membantu bisnis Anda berkembang melalui website profesional, aplikasi mobile modern, dan strategi SEO yang terbukti.</p>
                 <div class="down-buttons">
                   <div class="main-blue-button-hover">
-                    <a href="#contact">Konsultasi Gratis Sekarang</a>
+                    <a href="{{ route('contact') }}">Konsultasi Gratis Sekarang</a>
                   </div>
                   <div class="call-button">
-                    <a href="#"><i class="fa fa-phone"></i> +62 895-4286-86796</a>
+                    <a href="https://wa.me/62895630279695?text=Halo%20Reka%20Technology,%20saya%20ingin%20konsultasi%20website%20gratis" target="_blank"><i class="fa fa-phone"></i> +62 895-6302-79695</a>
                   </div>
                 </div>
               </div>
@@ -234,10 +234,10 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
                 <p>Kami mengelola konten media sosial Anda secara konsisten dan strategis untuk membangun brand, meningkatkan interaksi, dan mendatangkan pelanggan.</p>
                 <div class="down-buttons">
                   <div class="main-blue-button-hover">
-                    <a href="#services">Kelola Sosial Media Saya</a>
+                    <a href="{{ route('contact') }}">Kelola Sosial Media Saya</a>
                   </div>
                   <div class="call-button">
-                    <a href="#"><i class="fa fa-phone"></i> +62 895-4286-86796</a>
+                    <a href="https://wa.me/62895630279695?text=Halo%20Reka%20Technology,%20saya%20ingin%20konsultasi%20social%20media%20gratis" target="_blank"><i class="fa fa-phone"></i> +62 895-6302-79695</a>
                   </div>
                 </div>
               </div>
@@ -247,10 +247,10 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
                 <p>Kami membantu website Anda lebih mudah ditemukan calon pelanggan melalui strategi SEO on-page, off-page, dan technical SEO yang tepat sasaran.</p>
                 <div class="down-buttons">
                   <div class="main-blue-button-hover">
-                    <a href="#contact">Konsultasi SEO Gratis</a>
+                    <a href="{{ route('contact') }}">Konsultasi SEO Gratis</a>
                   </div>
                   <div class="call-button">
-                    <a href="#"><i class="fa fa-phone"></i> +62 895-4286-86796</a>
+                    <a href="https://wa.me/62895630279695?text=Halo%20Reka%20Technology,%20saya%20ingin%20konsultasi%20SEO%20gratis" target="_blank"><i class="fa fa-phone"></i> +62 895-6302-79695</a>
                   </div>
                 </div>
               </div>
@@ -531,15 +531,15 @@ return str_replace(['watch?v=','youtu.be/'], 'embed/', $url);
             @foreach ($portofolios as $item)
             <div class="item">
               <div class="thumb">
-                <img src="{{ $item->gambar ? asset('storage/img/portofolio/' . $item->gambar) : asset('onix/assets/images/portfolio-01.jpg') }}" alt="{{ $item->nama_project }}">
-                <div class="hover-effect">
+                <img src="{{ $item->gambar ? asset('storage/img/portofolio/' . $item->gambar) : asset('onix/assets/images/portfolio-01.jpg') }}" alt="{{ $item->nama_project }}" style="height:250px; object-fit:cover; border-radius:8px">
+                <!-- <div class="hover-effect">
                   <div class="inner-content">
                     <a rel="sponsored" href="#" target="_parent">
                       <h4>{{ $item->nama_project }}</h4>
                     </a>
                     <span>{{ $item->kategori ?? '-' }}</span>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
             @endforeach
